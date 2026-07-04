@@ -1,5 +1,5 @@
 /* components.css - Shared styles for WeirdHub */
-/* Minimal, sharp edges, light shadows, responsive, mobile-first friendly */
+/* Clean dark mode with deep black background + bright text */
 
 :root {
   --bg-color: #FFFBF0;
@@ -15,17 +15,18 @@
   --success-color: #2E7D32;
 }
 
+/* ==================== DARK MODE ==================== */
 html.dark {
-  --bg-color: #353535;
-  --text-color: #ffffff;
-  --card-bg: #363b33;
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --card-bg: #242424;
   --accent-color: #D35400;
-  --accent-hover: #171717;
-  --muted-color: #4A4A4A;
-  --border-color: #000000;
-  --shadow: 0 3px 10px rgba(2, 2, 2, 0.1);
-  --nav-bg: #000000;
-  --footer-bg: #665858;
+  --accent-hover: #e67e22;
+  --muted-color: #aaaaaa;
+  --border-color: #333333;
+  --shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+  --nav-bg: #1a1a1a;
+  --footer-bg: #222222;
 }
 
 * {
@@ -68,7 +69,7 @@ a:hover {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 16px;
+    padding: 0 18px;
   }
 }
 
@@ -175,7 +176,7 @@ a:hover {
 }
 
 .dropdown-content a:hover {
-  background-color: #f9f5eb;
+  background-color: #2a2a2a;
   color: var(--accent-color);
 }
 
@@ -224,7 +225,7 @@ a:hover {
     padding: 20px 24px;
     gap: 14px;
     border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
   }
 
   .nav-links.open {
@@ -246,10 +247,6 @@ a:hover {
   }
 
   .mobile-menu-btn {
-    display: block;
-  }
-
-  .dropdown:hover .dropdown-content {
     display: block;
   }
 }
@@ -306,7 +303,7 @@ a:hover {
   font-size: 0.85rem;
 }
 
-/* Post Cards - Sharp, minimal hover color change only */
+/* Post Cards */
 .post-card {
   display: block;
   text-decoration: none;
@@ -319,11 +316,11 @@ a:hover {
 }
 
 .post-card:hover {
-  background-color: #F9F5EB;
+  background-color: #f9f5eb;
 }
 
 html.dark .post-card:hover {
-  background-color: #580000;
+  background-color: #2f2f2f;
 }
 
 .post-card img {
@@ -346,7 +343,7 @@ html.dark .post-card:hover {
   margin: 0;
 }
 
-/* Category Cards (slightly different if needed) */
+/* Category Cards */
 .category-card {
   display: block;
   text-decoration: none;
@@ -359,11 +356,11 @@ html.dark .post-card:hover {
 }
 
 .category-card:hover {
-  background-color: #F9F5EB;
+  background-color: #f9f5eb;
 }
 
 html.dark .category-card:hover {
-  background-color: #F7F7F7;
+  background-color: #2f2f2f;
 }
 
 .category-card h3 {
@@ -470,10 +467,11 @@ textarea {
 }
 
 html.dark .tag {
-  background: #000000;
+  background: #333333;
+  color: #f0f0f0;
 }
 
-/* Responsive adjustments for readability */
+/* Responsive */
 @media (max-width: 600px) {
   .section-title {
     font-size: 1.65rem;

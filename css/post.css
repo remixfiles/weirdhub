@@ -39,6 +39,8 @@
 .post-content {
   font-size: 1.05rem;
   line-height: 1.85;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .post-content p {
@@ -61,7 +63,10 @@
 }
 
 .post-content figure img {
+  display: block;
+  width: 100%;
   max-width: 100%;
+  height: auto;
   aspect-ratio: 3 / 2;
   object-fit: cover;
   border: 1px solid var(--border-color);
@@ -99,4 +104,31 @@
   .post-content {
     font-size: 1rem;
   }
+}
+
+/* Prevent content overflow */
+
+.post-content iframe,
+.post-content video,
+.post-content table,
+.post-content pre,
+.post-content code {
+  max-width: 100%;
+}
+
+.post-content table,
+.post-content pre {
+  overflow-x: auto;
+}
+
+.post-content hr {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.post-content img,
+.post-hero {
+  max-width: 100%;
+  height: auto;
 }
