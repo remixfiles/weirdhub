@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact WeirdHub. Reach out with story ideas, feedback, or collaboration proposals.">
+  <title>Contact Us | WeirdHub</title>
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <div class="container" style="max-width:680px; padding:50px 20px 70px;">
+    <h1 style="font-size:2.5rem; margin-bottom:12px;">Get in Touch</h1>
+    <p style="color:var(--muted-color); margin-bottom:35px;">We read every message. For story pitches, feedback, or press inquiries, please use the form below.</p>
+
+    <form id="contact-form" onsubmit="handleSubmit(event)">
+      <label style="display:block; margin-bottom:6px; font-weight:500;">Your Name</label>
+      <input type="text" id="name" required placeholder="Jane Doe">
+
+      <label style="display:block; margin-bottom:6px; font-weight:500;">Email Address</label>
+      <input type="email" id="email" required placeholder="you@example.com">
+
+      <label style="display:block; margin-bottom:6px; font-weight:500;">Subject</label>
+      <input type="text" id="subject" required placeholder="Story idea / Feedback / Collaboration">
+
+      <label style="display:block; margin-bottom:6px; font-weight:500;">Message</label>
+      <textarea id="message" required placeholder="Tell us more..."></textarea>
+
+      <button type="submit" class="btn" style="margin-top:10px;">Send Message</button>
+    </form>
+
+    <p style="margin-top:30px; font-size:0.9rem; color:var(--muted-color);">We typically respond within 3–5 business days. For urgent matters, email editor@weirdhub.site (demo address).</p>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/components.js"></script>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        alert('Thank you! Your message has been received. (This is a demo — in production this would send to our team.)');
+        e.target.reset();
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      }, 1200);
+    }
+  </script>
+</body>
+</html>

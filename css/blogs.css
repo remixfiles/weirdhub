@@ -1,0 +1,62 @@
+/* blogs.css - Styles for /blogs/ hub and category listing pages */
+
+.page-header {
+  background: linear-gradient(to bottom, #FFFBF0, #f9f5eb);
+  padding: 55px 0 45px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+html.dark .page-header {
+  background: linear-gradient(to bottom, #F0F0F0, #E8E8E8);
+}
+
+.page-header h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.page-header .lead {
+  max-width: 560px;
+  margin: 0 auto;
+  color: var(--muted-color);
+  font-size: 1.1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 40px 0 30px;
+  }
+  
+  .page-header h1 {
+    font-size: 2.1rem;
+  }
+  
+  .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Category specific header variation */
+.category-header {
+  padding: 45px 0 35px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.category-header .tag {
+  margin-bottom: 12px;
+}
