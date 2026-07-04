@@ -16,16 +16,16 @@
 }
 
 html.dark {
-  --bg-color: #F0F0F0;
-  --text-color: #1F1F1F;
-  --card-bg: #FFFFFF;
+  --bg-color: #353535;
+  --text-color: #ffffff;
+  --card-bg: #363b33;
   --accent-color: #D35400;
-  --accent-hover: #A63A00;
+  --accent-hover: #171717;
   --muted-color: #4A4A4A;
-  --border-color: #D0D0D0;
-  --shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  --nav-bg: #F0F0F0;
-  --footer-bg: #E8E8E8;
+  --border-color: #000000;
+  --shadow: 0 3px 10px rgba(2, 2, 2, 0.1);
+  --nav-bg: #000000;
+  --footer-bg: #665858;
 }
 
 * {
@@ -323,7 +323,7 @@ a:hover {
 }
 
 html.dark .post-card:hover {
-  background-color: #F7F7F7;
+  background-color: #580000;
 }
 
 .post-card img {
@@ -470,7 +470,7 @@ textarea {
 }
 
 html.dark .tag {
-  background: #e8e0d0;
+  background: #000000;
 }
 
 /* Responsive adjustments for readability */
