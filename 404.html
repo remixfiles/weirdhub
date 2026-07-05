@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>404 - Page Not Found | WeirdHub</title>
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <style>
+    /* 404 specific styles - minimal additions */
+    .error-container {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    
+    .error-content {
+      max-width: 620px;
+    }
+    
+    .error-code {
+      font-size: 8rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      letter-spacing: -4px;
+    }
+    
+    .error-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: var(--text-color);
+    }
+    
+    .error-message {
+      font-size: 1.15rem;
+      color: var(--muted-color);
+      margin-bottom: 35px;
+      line-height: 1.7;
+    }
+    
+    .error-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .suggestion {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .suggestion h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--text-color);
+    }
+    
+    .suggestion-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    
+    .suggestion-links a {
+      display: inline-block;
+      padding: 8px 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    .suggestion-links a:hover {
+      background: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+    }
+    
+    @media (max-width: 600px) {
+      .error-code {
+        font-size: 6rem;
+      }
+      .error-title {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <div class="error-container">
+    <div class="error-content">
+      <div class="error-code">404</div>
+      <h1 class="error-title">Page Not Found</h1>
+      
+      <p class="error-message">
+        Looks like this page took a wrong turn into the weird unknown. 
+        Even our best explorers couldn't track it down. Don't worry — plenty of fascinating stories are still waiting for you.
+      </p>
+
+      <div class="error-actions">
+        <a href="/" class="btn">Go to Homepage</a>
+        <a href="/blogs/" class="btn btn-outline">Browse All Blogs</a>
+      </div>
+
+      <div class="suggestion">
+        <h3>Or explore these popular sections:</h3>
+        <div class="suggestion-links">
+          <a href="/blogs/weird-hub/">Weird Hub</a>
+          <a href="/blogs/ai-facts/">AI Facts</a>
+          <a href="/blogs/update-of-science/">Science Updates</a>
+          <a href="/blogs/historical-places/">Historical Places</a>
+          <a href="/about/">About WeirdHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/components.js"></script>
+</body>
+</html>
