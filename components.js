@@ -206,3 +206,110 @@ function injectComponents() {
 
 // Auto run on every page
 document.addEventListener('DOMContentLoaded', injectComponents);
+
+
+
+// ========= Homepage Cards Render ========
+
+let blogPosts = [];
+
+async function loadBlogPosts() {
+
+    if (blogPosts.length) return blogPosts;
+
+    try {
+
+        const response = await fetch("/blogpost.json");
+
+        blogPosts = await response.json();
+
+        return blogPosts;
+
+    } catch (err) {
+
+        console.error("Failed to load blogpost.json", err);
+
+        return [];
+
+    }
+
+}
+
+function createPostCard(post){
+
+    return `
+        <a href="${post.link}" class="post-card">
+            <img
+                src="${post.featuredImage}"
+                alt="${post.title}"
+                loading="lazy"
+                decoding="async">
+
+            <div class="post-card-content">
+                <h3>${post.title}</h3>
+            </div>
+        </a>
+    `;
+
+}
+
+function shuffle(array){
+
+    const arr=[...array];
+
+    for(let i=arr.length-1;i>0;i--){
+
+        const j=Math.floor(Math.random()*(i+1));
+
+        [arr[i],arr[j]]=[arr[j],arr[i]];
+
+    }
+
+    return arr;
+
+}
+
+async function renderLatestPosts(){
+
+    const container=document.getElementById("latest-posts");
+
+    if(!container) return;
+
+    const posts=await loadBlogPosts();
+
+    container.innerHTML=shuffle(posts)
+        .slice(0,6)
+        .map(createPostCard)
+        .join("");
+
+}
+
+async function renderMorePosts(){
+
+    const container=document.getElementById("more-posts");
+
+    if(!container) return;
+
+    const posts=await loadBlogPosts();
+
+    const currentSlug = location.pathname
+    .replace(/\/$/, "")
+    .split("/")
+    .pop();
+
+container.innerHTML = shuffle(
+    posts.filter(post => post.postSlug !== currentSlug)
+)
+.slice(0,6)
+.map(createPostCard)
+.join("");
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    renderLatestPosts();
+
+    renderMorePosts();
+
+});

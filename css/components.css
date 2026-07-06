@@ -471,8 +471,37 @@ html.dark .tag {
   color: #f0f0f0;
 }
 
+/* Grid */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 /* Responsive */
+@media (max-width: 991px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 600px) {
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
   .section-title {
     font-size: 1.65rem;
   }
