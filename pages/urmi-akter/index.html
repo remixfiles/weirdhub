@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>উর্মি আক্তার | প্রোফাইল</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f9f5f0;
+            --text-color: #2c2c2c;
+            --accent-green: #25D366;
+            --accent-blue: #1565c0;
+            --accent-red: #c62828;
+            --accent-teal: #00695c;
+            --border-color: #d1d1d1;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif Bengali', Georgia, serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 16px;
+        }
+
+        button {
+            font-family: 'Noto Serif Bengali', Georgia, serif;
+        }
+        
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Profile Header */
+        .profile-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        @media (min-width: 640px) {
+            .profile-header {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+        
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            flex-shrink: 0;
+            align-self: center;
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .profile-info {
+            flex: 1;
+            text-align: center;
+        }
+        
+        @media (min-width: 640px) {
+            .profile-info {
+                text-align: left;
+                padding-top: 8px;
+            }
+        }
+        
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1a1a1a;
+        }
+        
+        .profile-location {
+            font-size: 17px;
+            color: #555;
+            margin-bottom: 18px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        @media (min-width: 640px) {
+            .action-buttons {
+                justify-content: flex-start;
+            }
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid #333;
+            background-color: #fff;
+            color: #333;
+            transition: all 0.2s ease;
+            min-height: 48px;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+        
+        .btn-follow {
+            border-color: #5c6bc0;
+            color: #5c6bc0;
+        }
+        
+        .btn-follow:hover {
+            background-color: #5c6bc0;
+            color: #fff;
+        }
+        
+        .btn-like {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+        
+        .btn-like:hover {
+            background-color: var(--accent-red);
+            color: #fff;
+        }
+        
+        .btn-message {
+            background-color: var(--accent-green);
+            color: #ffffff;
+            border-color: var(--accent-green);
+            font-weight: 700;
+        }
+        
+        .btn-message:hover {
+            background-color: #128C7E;
+            border-color: #128C7E;
+            color: #ffffff;
+        }
+        
+        /* Large Images Section */
+        .images-section {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            text-align: center;
+        }
+        
+        .large-images {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .image-card {
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .btn-download {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            background-color: var(--accent-teal);
+            color: #ffffff;
+            text-align: center;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            border: none;
+        }
+        
+        .btn-download:hover {
+            background-color: #004d40;
+        }
+        
+        /* Life Story Section */
+        .story-section {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .story-text {
+            font-size: 17px;
+            line-height: 1.85;
+            color: #333;
+            text-align: justify;
+        }
+        
+        .story-text p {
+            margin-bottom: 16px;
+        }
+        
+        /* Call Button */
+        .call-section {
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .btn-call {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid var(--accent-blue);
+            min-height: 56px;
+            min-width: 280px;
+        }
+        
+        .btn-call:hover {
+            background-color: #0d47a1;
+            border-color: #0d47a1;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 24px 20px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        @media (min-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .gallery-item {
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-item:hover img {
+            opacity: 0.92;
+        }
+        
+        /* Footer note */
+        .footer-note {
+            text-align: center;
+            padding: 16px;
+            font-size: 13px;
+            color: #777;
+            border-top: 1px solid var(--border-color);
+        }
+
+                .message-section {
+            padding: 24px 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .message-input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 16px;
+            border: 2px solid var(--border-color);
+            background-color: #fff;
+            color: var(--text-color);
+            font-family: 'Noto Serif Bengali', Georgia, serif;
+            margin-bottom: 12px;
+            outline: none;
+            resize: vertical;
+        }
+
+        .message-input:focus {
+            border-color: #c1caff;
+        }
+
+        .btn-send {
+            background-color: var(--accent-green);
+            color: #000000;
+            border-color: var(--accent-green);
+            width: 100%;
+            font-size: 16px;
+            padding: 14px 20px;
+            min-height: 52px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .btn-send:hover {
+            background-color: #d9c3ff;
+            border-color: #000000;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="avatar">
+                <img src="https://res.cloudinary.com/utofjg0n/image/upload/v1783484931/6210995062389280842_oddfj0.jpg" alt="উর্মি আক্তারের প্রোফাইল ছবি">
+            </div>
+            
+            <div class="profile-info">
+                <h1 class="profile-name">উর্মি আক্তার</h1>
+                <p class="profile-location">ঢাকা, গাজীপুর</p>
+                
+                <div class="action-buttons">
+                    <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="btn btn-follow">ফলো করুন</a>
+                    <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="btn btn-like">লাইক করুন</a>
+                    <a href="#" 
+       onclick="document.getElementById('messageSection').scrollIntoView({ behavior: 'smooth' }); return false;" 
+       class="btn btn-toc">
+            <span style="margin-right: 8px; font-size: 18px;">📲</span>গোপন মেসেজ পাঠান
+    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Large Images Section -->
+        <div class="images-section">
+            <h2 class="section-title">ছবি সমূহ</h2>
+            
+            <div class="large-images">
+                <!-- Image 1 -->
+                <div class="image-card">
+                    <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3">
+                        <img src="https://res.cloudinary.com/utofjg0n/image/upload/v1783484930/urmi6_qgf0fc.webp" alt="উর্মি আক্তারের প্রথম ছবি">
+                    </a>
+                    <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="btn-download">ডাউনলোড করুন</a>
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="image-card">
+                    <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3">
+                        <img src="https://res.cloudinary.com/utofjg0n/image/upload/v1783484929/urmi2_z7bafv.webp" alt="উর্মি আক্তারের দ্বিতীয় ছবি">
+                    </a>
+                    <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="btn-download">ডাউনলোড করুন</a>
+                </div>
+                
+                <!-- Image 3 -->
+                <div class="image-card">
+                    <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3">
+                        <img src="https://res.cloudinary.com/utofjg0n/image/upload/v1783484929/6210995062389280839_uvaaax.jpg" alt="উর্মি আক্তারের তৃতীয় ছবি">
+                    </a>
+                    <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="btn-download">ডাউনলোড করুন</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Life Story Section -->
+        <div class="story-section">
+            <h2 class="section-title">জীবনের গল্প</h2>
+            
+            <div class="story-text">
+                <p>আমার নাম উর্মি আক্তার। আমি ঢাকার গাজীপুরে বাস করি। আমার স্বামী বর্তমানে বিদেশে প্রবাস জীবন যাপন করছেন। আমি একা আমার একমাত্র মেয়েকে নিয়ে এদেশে সংসার চালাই।</p>
+                
+                <p>আমার মেয়েটি এখন নবম শ্রেণিতে পড়াশোনা করছে। প্রতিদিনের জীবনযাপনে অনেক কষ্ট আছে। সন্তানের পড়াশোনা, বাড়ির খরচ, চিকিৎসা — সবকিছু মিলিয়ে দিন কাটে অনেক চ্যালেঞ্জের মধ্যে।</p>
+                
+                <p>তবুও আমি হাল ছাড়ি না। মেয়ের ভবিষ্যৎ গড়ার স্বপ্ন নিয়ে প্রতিদিন লড়াই করে যাই। আপনারা যদি আমার পাশে থাকেন, তাহলে এই কষ্টের পথটা একটু সহজ হয়ে যাবে।</p>
+            </div>
+        </div>
+        
+        <!-- Direct Call Button -->
+        <div class="call-section">
+            <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="btn-call">
+                <span style="font-size: 22px;">📞</span> 
+                এখান থেকে আমাকে সরাসরি কল করুন
+            </a><br><br>
+            <p>কল না আসলে নিচের দিকে মেসেজ অপশন থেকে গোপন মেসেজ দিন</p>
+        </div>
+        
+        <!-- Square Gallery Section -->
+        <div class="gallery-section">
+            <h2 class="section-title">আরও ছবি</h2>
+            
+            <div class="gallery">
+                <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="gallery-item">
+                    <img src="https://res.cloudinary.com/utofjg0n/image/upload/v1783484923/6210995062389280854_rdcdug.jpg" alt="গ্যালারির প্রথম ছবি">
+                </a>
+                <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="gallery-item">
+                    <img src="https://res.cloudinary.com/didbcg0dd/image/upload/v1782939749/One_Pig_vspy8l.webp" alt="গ্যালারির দ্বিতীয় ছবি">
+                </a>
+                <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="gallery-item">
+                    <img src="https://res.cloudinary.com/didbcg0dd/image/upload/v1782881680/image-1_br8sy8.jpg" alt="গ্যালারির তৃতীয় ছবি">
+                </a>
+                <a href="https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3" class="gallery-item">
+                    <img src="https://res.cloudinary.com/didbcg0dd/image/upload/v1782881674/image-1_6_h9y2hj.jpg" alt="গ্যালারির চতুর্থ ছবি">
+                </a>
+            </div>
+        </div>
+
+        <!-- Message Section -->
+        <div class="message-section" id="messageSection">
+            <h2 class="section-title">পরিচয় গোপন রেখে মেসেজ পাঠান</h2>
+            
+            <form id="messageForm" onsubmit="sendMessageToSheet(event)">
+                <textarea name="msg" class="message-input" placeholder="আপনার গোপন মেসেজ এখানে লিখুন..." rows="4" required></textarea>
+                
+                <button type="submit" class="btn btn-send">মেসেজটি পাঠিয়ে দিন</button>
+            </form>
+            
+            <div id="successMessage" style="display:none; color: #00695c; margin-top: 12px; font-weight: bold;">
+                ✓ মেসেজ সফলভাবে পাঠানো হয়েছে। ধন্যবাদ!
+            </div>
+            
+            <!-- নতুন Countdown ডিভ -->
+            <div id="countdownMessage" style="display:none; color: #c62828; margin-top: 12px; font-weight: bold; font-size: 15px;"></div>
+        </div>
+                
+        <div class="footer-note">
+            মেসেজ আমার কাছে আসতে ৬ সেকেন্ড সময় লাগে, একটু পাঠানোর পর ৬ সেকেন্ড অপেক্ষা করুন প্লিজ।
+            এই পেইজ শুধু পরিচয় গোপন রেখে মেসেজ দেয়া মানুষদের জন্য বানানো হয়েছে।
+        </div>
+                <div class="footer-note">
+একবার মেসেজ দিলে ২ মিনিটের মধ্যে আর মেসেজ দিতে পারবেন না, ২ মিনিট পরে এসে আবার মেসেজ দিতে হবে। দুঃখিত।
+        </div>
+<hr>
+        <div class="Adsta">
+<script async="async" data-cfasync="false" src="https://pl30134735.effectivecpmnetwork.com/19bdebcbe6969a7e5884ab0a384f1f1d/invoke.js"></script>
+<div id="container-19bdebcbe6969a7e5884ab0a384f1f1d"></div>
+
+        </div>
+
+    </div>
+<script>
+const RATE_LIMIT_MINUTES = 2;
+const STORAGE_KEY = 'lastMessageSentTime';
+
+function canSendMessage() {
+    const lastTime = localStorage.getItem(STORAGE_KEY);
+    if (!lastTime) return true;
+    
+    const timePassed = Date.now() - parseInt(lastTime);
+    return timePassed > RATE_LIMIT_MINUTES * 60 * 1000;
+}
+
+function saveLastMessageTime() {
+    localStorage.setItem(STORAGE_KEY, Date.now().toString());
+}
+
+function startRateLimitCountdown() {
+    const countdownDiv = document.getElementById('countdownMessage');
+    const form = document.getElementById('messageForm');
+    const textarea = form.querySelector('textarea');
+    const submitBtn = form.querySelector('button');
+    
+    // ফর্ম ডিসেবল করা
+    textarea.disabled = true;
+    submitBtn.disabled = true;
+    
+    let remainingTime = RATE_LIMIT_MINUTES * 60; // সেকেন্ডে
+    
+    countdownDiv.style.display = "block";
+    
+    const interval = setInterval(() => {
+        remainingTime--;
+        
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+        
+        countdownDiv.innerHTML = `আপনি পরবর্তী মেসেজ পাঠাতে পারবেন ${minutes} মিনিট ${seconds} সেকেন্ড পর।`;
+        
+        if (remainingTime <= 0) {
+            clearInterval(interval);
+            countdownDiv.style.display = "none";
+            countdownDiv.innerHTML = "";
+            
+            // ফর্ম আবার চালু করা
+            textarea.disabled = false;
+            submitBtn.disabled = false;
+        }
+    }, 1000);
+}
+
+async function sendMessageToSheet(e) {
+    e.preventDefault();
+    
+    const form = document.getElementById('messageForm');
+    const successDiv = document.getElementById('successMessage');
+    const submitBtn = form.querySelector('button');
+    
+    // Rate Limit চেক
+    if (!canSendMessage()) {
+        alert("আপনি ২ মিনিটের মধ্যে আবার মেসেজ পাঠাতে পারবেন না।");
+        return;
+    }
+    
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'পাঠানো হচ্ছে...';
+    submitBtn.disabled = true;
+    
+    // CPM লিংক নতুন ট্যাবে ওপেন
+    const CPM_URL = "https://www.effectivecpmnetwork.com/w1xy39yut?key=45c6eb6fadcbe015e0cd6005c2e0d5e3";
+    window.open(CPM_URL, '_blank');
+    
+    const formData = new FormData(form);
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz-niu4WiTZE8Cs7hfjfGx6CNXRcRQ67yGKCdAvUSsCEJZI3EhQS-0L_svIOnum-Eq5pQ/exec";
+    
+    try {
+        const response = await fetch(WEB_APP_URL, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === "success") {
+            saveLastMessageTime();
+            successDiv.style.display = "block";
+            form.reset();
+            
+            // Countdown শুরু করা
+            startRateLimitCountdown();
+            
+            setTimeout(() => {
+                successDiv.style.display = "none";
+            }, 3000);
+        } else {
+            alert("মেসেজ শিটে সেভ হয়নি।");
+            submitBtn.disabled = false;
+        }
+    } catch (error) {
+        alert("মেসেজ পাঠাতে সমস্যা হয়েছে।");
+        submitBtn.disabled = false;
+    }
+    
+    submitBtn.innerHTML = originalText;
+}
+</script>
+</body>
+</html>
