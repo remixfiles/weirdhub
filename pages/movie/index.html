@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CinePulse - Movie Reviews & Insights</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #1e293b;
+      border-bottom: 1px solid #334155;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      color: #38bdf8;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    header p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    .top-ad-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+      background-color: #0b1120;
+      overflow-x: auto;
+    }
+    .main-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 160px 1fr 300px;
+      gap: 1.5rem;
+      padding: 1.5rem 1rem;
+    }
+    .left-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .content-area {
+      background-color: #1e293b;
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid #334155;
+    }
+    .right-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .movie-poster {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      background-color: #334155;
+    }
+    .movie-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: #38bdf8;
+    }
+    .movie-rating {
+      background-color: #eab308;
+      color: #0f172a;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .ad-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+    .ad-sidebar-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    footer {
+      background-color: #1e293b;
+      border-top: 1px solid #334155;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 1024px) {
+      .main-wrapper {
+        grid-template-columns: 1fr 300px;
+      }
+      .left-sidebar {
+        width: 100%;
+      }
+    }
+    @media (max-width: 768px) {
+      .main-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .right-sidebar {
+        width: 100%;
+      }
+      .left-sidebar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CINEPULSE REVIEWS</h1>
+    <p>Honest reviews, critical takes, and cinema news</p>
+  </header>
+
+  <!-- Ad 2: Header Horizontal Banner (468x60) -->
+  <div class="top-ad-wrapper">
+    <script>
+      atOptions = {
+        'key' : 'db6832f46352866025eeb345a6610681',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highrevenueformat.com/db6832f46352866025eeb345a6610681/invoke.js"></script>
+  </div>
+
+  <div class="main-wrapper">
+    <!-- Ad 1: Left Skyscraper Banner (160x600) -->
+    <aside class="left-sidebar">
+      <div class="ad-sidebar-box">
+        <script>
+          atOptions = {
+            'key' : 'cb365b149caf0a8bb35192d98f49d61f',
+            'format' : 'iframe',
+            'height' : 600,
+            'width' : 160,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/cb365b149caf0a8bb35192d98f49d61f/invoke.js"></script>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1000&q=80" alt="Movie Poster" class="movie-poster">
+      
+      <h2>Interstellar Horizons (2026) – Review</h2>
+      <div class="movie-meta">
+        <span>Directed by Alex Garland</span>
+        <span>•</span>
+        <span>Sci-Fi / Drama</span>
+        <span>•</span>
+        <span class="movie-rating">8.8 / 10</span>
+      </div>
+
+      <p>
+        A visually stunning exploration of human persistence, deep space travel, and time manipulation. The film balances hard science fiction concepts with raw, emotional depth that resonates across every scene.
+      </p>
+
+      <!-- Ad 6: Inline Ad Banner (320x50) -->
+      <div class="ad-container">
+        <script>
+          atOptions = {
+            'key' : '47f39551278bad9b7c4e470d1c751af0',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/47f39551278bad9b7c4e470d1c751af0/invoke.js"></script>
+      </div>
+
+      <p>
+        The cinematic scale is complemented by a powerful, pulsating sound design. Every silent passage across the cosmic void serves as an emotional crescendo. For enthusiasts of cerebral world-building, this entry marks a defining achievement in modern cinema storytelling.
+      </p>
+
+      <!-- Ad 4: Native Banner Container -->
+      <div class="ad-container">
+        <script async="async" data-cfasync="false" src="https://pl30134735.profitableratecpmnetwork.com/19bdebcbe6969a7e5884ab0a384f1f1d/invoke.js"></script>
+        <div id="container-19bdebcbe6969a7e5884ab0a384f1f1d"></div>
+      </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="right-sidebar">
+      <!-- Ad 7: Sidebar Box Ad (300x250) -->
+      <div class="ad-sidebar-box">
+        <script>
+          atOptions = {
+            'key' : '5f5e74b694e4e79eba9ca7adabbbd02c',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/5f5e74b694e4e79eba9ca7adabbbd02c/invoke.js"></script>
+      </div>
+
+      <!-- Ad 3: Sidebar Skyscraper Ad (160x300) -->
+      <div class="ad-sidebar-box">
+        <script>
+          atOptions = {
+            'key' : '7344c5908ffeedfd19e12b193e2ac202',
+            'format' : 'iframe',
+            'height' : 300,
+            'width' : 160,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highrevenueformat.com/7344c5908ffeedfd19e12b193e2ac202/invoke.js"></script>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 CinePulse Reviews. All rights reserved.</p>
+  </footer>
+
+  <!-- Ad 5: Social Bar Script -->
+  <script src="https://pl30134736.profitableratecpmnetwork.com/27/be/cb/27becb38b03b9c2e958c8c05ff4d142f.js"></script>
+</body>
+</html>
