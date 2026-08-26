@@ -31,7 +31,7 @@
       <button type="submit" class="btn" style="margin-top:10px;">Send Message</button>
     </form>
 
-    <p style="margin-top:30px; font-size:0.9rem; color:var(--muted-color);">We typically respond within 3–5 business days. For urgent matters, email editor@weirdhub.site (demo address).</p>
+    <p style="margin-top:30px; font-size:0.9rem; color:var(--muted-color);">We typically respond within 3–5 business days.</p>
   </div>
 
   <script async="async" data-cfasync="false" src="https://pl30134735.effectivecpmnetwork.com/19bdebcbe6969a7e5884ab0a384f1f1d/invoke.js"></script>
@@ -39,20 +39,43 @@
 <div id="footer-placeholder"></div>
 
   <script src="/components.js"></script>
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBm08grHwAq2gJc8bDv55b4o-f4YkmVBMyjq5jxQwb-fzbTND-XrTwH3kHIjYOjW8_/exec';
 
-      setTimeout(() => {
-        alert('Thank you! Your message has been received. (This is a demo — in production this would send to our team.)');
-        e.target.reset();
-        btn.textContent = 'Send Message';
-        btn.disabled = false;
-      }, 1200);
-    }
-  </script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const payload = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      subject: document.getElementById('subject').value,
+      message: document.getElementById('message').value
+    };
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors', // CORS ব্লক এড়াতে এটি জরুরি
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      alert('Thank you! Your message has been sent successfully.');
+      e.target.reset();
+    })
+    .catch(error => {
+      console.error('Error!', error);
+      alert('Something went wrong. Please try again later.');
+    })
+    .finally(() => {
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+    });
+  }
+</script>
 </body>
 </html>
