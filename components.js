@@ -82,13 +82,13 @@ function createFooter() {
         <div class="footer-col">
           <h4>Connect</h4>
           <ul>
-            <li><a href="https://twitter.com/weirdhub" target="_blank" rel="noopener">Twitter / X</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Newsletter</a></li>
+            <li><a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92" target="_blank" rel="noopener">Twitter / X</a></li>
+            <li><a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92" target="_blank" rel="noopener">Newsletter</a></li>
           </ul>
         </div>
       </div>
-      
+
       <div class="footer-bottom">
         <p>&copy; ${year} WeirdHub. All rights reserved. | Built for curious minds worldwide.</p>
       </div>
