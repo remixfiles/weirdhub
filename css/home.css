@@ -1,14 +1,14 @@
 /* home.css - Homepage specific styles */
 
 .hero {
-  background: linear-gradient(135deg, #FFFBF0 0%, #F8F0DC 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
   padding: 100px 0 90px;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
 }
 
 html.dark .hero {
-  background: linear-gradient(135deg, #F0F0F0 0%, #E6E6E6 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #172554 100%);
 }
 
 .hero-content {
@@ -83,13 +83,13 @@ html.dark .hero {
 
 /* Mission section */
 .mission {
-  background-color: #f9f5eb;
+  background-color: #f1f5f9;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
 
 html.dark .mission {
-  background-color: #E8E8E8;
+  background-color: #111827;
 }
 
 .mission-content {

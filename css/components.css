@@ -80,7 +80,7 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
 }
 
 .nav-container {
@@ -176,8 +176,13 @@ a:hover {
 }
 
 .dropdown-content a:hover {
-  background-color: #2a2a2a;
+  background-color: #f1f5f9;
   color: var(--accent-color);
+}
+
+html.dark .dropdown-content a:hover {
+  background-color: #334155;
+  color: var(--accent-hover);
 }
 
 .dropdown:hover .dropdown-content,
@@ -316,11 +321,13 @@ a:hover {
 }
 
 .post-card:hover {
-  background-color: #f9f5eb;
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
 }
 
 html.dark .post-card:hover {
-  background-color: #2f2f2f;
+  background-color: #263449;
+  border-color: #475569;
 }
 
 .post-card img {
@@ -356,11 +363,13 @@ html.dark .post-card:hover {
 }
 
 .category-card:hover {
-  background-color: #f9f5eb;
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
 }
 
 html.dark .category-card:hover {
-  background-color: #2f2f2f;
+  background-color: #263449;
+  border-color: #475569;
 }
 
 .category-card h3 {
@@ -379,6 +388,7 @@ html.dark .category-card:hover {
 .btn {
   display: inline-block;
   padding: 12px 28px;
+  border-radius: 8px;
   background-color: var(--accent-color);
   color: #ffffff;
   font-weight: 600;
@@ -397,6 +407,7 @@ html.dark .category-card:hover {
 
 .btn-outline {
   background: transparent;
+  border-radius: 8px;
   color: var(--accent-color);
   border: 1px solid var(--accent-color);
 }
@@ -458,8 +469,8 @@ textarea {
 
 .tag {
   display: inline-block;
-  background: #f0e6d8;
-  color: var(--accent-color);
+  background: #eff6ff;
+  color: #2563eb;
   font-size: 0.75rem;
   font-weight: 600;
   padding: 3px 10px;
@@ -467,8 +478,8 @@ textarea {
 }
 
 html.dark .tag {
-  background: #333333;
-  color: #f0f0f0;
+  background: #1e3a5f;
+  color: #93c5fd;
 }
 
 /* Grid */
