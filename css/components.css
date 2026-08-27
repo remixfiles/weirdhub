@@ -2,31 +2,31 @@
 /* Clean dark mode with deep black background + bright text */
 
 :root {
-  --bg-color: #FFFBF0;
-  --text-color: #222222;
+  --bg-color: #f8fafc;
+  --text-color: #111827;
   --card-bg: #ffffff;
-  --accent-color: #D35400;
-  --accent-hover: #A63A00;
-  --muted-color: #555555;
-  --border-color: #E0D8C8;
-  --shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-  --nav-bg: #FFFBF0;
-  --footer-bg: #F8F4E8;
-  --success-color: #2E7D32;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+  --muted-color: #64748b;
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --nav-bg: #ffffff;
+  --footer-bg: #f1f5f9;
+  --success-color: #16a34a;
 }
 
 /* ==================== DARK MODE ==================== */
 html.dark {
-  --bg-color: #1a1a1a;
-  --text-color: #f0f0f0;
-  --card-bg: #242424;
-  --accent-color: #D35400;
-  --accent-hover: #e67e22;
-  --muted-color: #aaaaaa;
-  --border-color: #333333;
-  --shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-  --nav-bg: #1a1a1a;
-  --footer-bg: #222222;
+  --bg-color: #0f172a;
+  --text-color: #f1f5f9;
+  --card-bg: #1e293b;
+  --accent-color: #60a5fa;
+  --accent-hover: #93c5fd;
+  --muted-color: #94a3b8;
+  --border-color: #334155;
+  --shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  --nav-bg: #0f172a;
+  --footer-bg: #111827;
 }
 
 * {
