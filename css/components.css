@@ -521,3 +521,8 @@ html.dark .tag {
     padding: 18px 16px;
   }
 }
+
+.centerAds {
+  display: flex;
+  justify-content: center;
+}
