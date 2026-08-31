@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://quge5.com/88/tag.min.js" data-zone="274422" async data-cfasync="false"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EmPhone | Ultimate Rugged Communication Device</title>
   
+  <!-- Google Fonts & Lucide Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Teko:wght@600;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
       --bg-card: #151A23;
       --bg-card-hover: #1C2330;
       --accent-orange: #FF5E14;
-      --accent-orange-glow: rgba(255, 94, 20, 0.35);
+      --accent-orange-glow: rgba(255, 94, 20, 0.25);
       --accent-green: #00E676;
       --text-white: #FFFFFF;
       --text-gray: #9BA3AF;
@@ -40,42 +40,49 @@
       overflow-x: hidden;
     }
 
-    /* Ambient Glow Backgrounds */
     .glow-bg {
       position: absolute;
-      top: 10%;
+      top: 5%;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
+      width: 650px;
+      height: 650px;
       background: radial-gradient(circle, var(--accent-orange-glow) 0%, rgba(0,0,0,0) 70%);
       z-index: 0;
-      filter: blur(80px);
+      filter: blur(90px);
       pointer-events: none;
     }
 
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 20px;
       position: relative;
       z-index: 1;
     }
 
-    /* Navigation */
+    /* Ad Unit Wrappers */
+    .ad-slot {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 28px 0;
+      overflow: hidden;
+      min-height: 50px;
+    }
+    .ad-sidebar-desktop {
+      display: none;
+    }
+
+    /* Header */
     header {
-      padding: 24px 0;
+      padding: 20px 0;
       border-bottom: 1px solid var(--border-color);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(11, 14, 20, 0.85);
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      background: rgba(11, 14, 20, 0.9);
     }
     .logo {
       font-family: 'Teko', sans-serif;
@@ -85,7 +92,7 @@
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
     .logo span {
       color: var(--accent-orange);
@@ -93,12 +100,12 @@
 
     /* Hero Section */
     .hero {
-      padding: 80px 0 60px;
+      padding: 50px 0 40px;
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
       align-items: center;
     }
     .tagline-badge {
@@ -108,60 +115,38 @@
       background: rgba(255, 94, 20, 0.12);
       border: 1px solid var(--accent-orange);
       color: var(--accent-orange);
-      padding: 6px 14px;
+      padding: 6px 16px;
       border-radius: 50px;
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    .tagline-badge i {
-      width: 14px;
-      height: 14px;
+      margin-bottom: 20px;
     }
     .hero-title {
-      font-size: 3.8rem;
+      font-size: 3.4rem;
       font-weight: 900;
-      line-height: 1.1;
+      line-height: 1.15;
       margin-bottom: 20px;
       letter-spacing: -1px;
     }
     .hero-subtitle {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--text-gray);
-      margin-bottom: 36px;
-      font-weight: 400;
+      margin-bottom: 24px;
     }
 
-    /* Main CTA Button */
-    .btn-cta {
-      display: inline-flex;
+    /* Product Showcase Column */
+    .product-column {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: linear-gradient(135deg, #FF6A00 0%, #EE0979 100%);
-      color: #fff;
-      font-size: 1.25rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 20px 42px;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 10px 30px rgba(238, 9, 121, 0.4);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .btn-cta:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(255, 106, 0, 0.6);
-      color: #fff;
+      gap: 24px;
     }
 
-    /* Square Image Container */
-    .product-image-box {
+    .square-image-container {
       width: 100%;
+      max-width: 440px;
       aspect-ratio: 1 / 1;
       background: var(--bg-card);
       border: 2px solid var(--border-color);
@@ -171,173 +156,208 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     }
-    .product-image-box img {
+    .square-image-container img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
+      transition: transform 0.4s ease;
     }
-    .product-image-box:hover img {
-      transform: scale(1.05);
+    .square-image-container:hover img {
+      transform: scale(1.03);
     }
 
-    /* Top 6 USPs Grid */
+    /* Big Call to Action Button */
+    .btn-check-price {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 440px;
+      background: linear-gradient(135deg, #FF6A00 0%, #EE0979 100%);
+      color: #fff;
+      font-size: 1.35rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 22px 36px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 12px 30px rgba(255, 94, 20, 0.4);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-check-price:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(255, 94, 20, 0.65);
+    }
+
+    /* Core USPs Grid */
     .usps-section {
-      padding: 80px 0;
+      padding: 60px 0;
     }
     .section-header {
       text-align: center;
-      max-width: 700px;
-      margin: 0 auto 50px;
+      max-width: 720px;
+      margin: 0 auto 45px;
     }
     .section-header h2 {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       font-weight: 800;
       margin-bottom: 12px;
     }
     .section-header p {
       color: var(--text-gray);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
     .usps-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 22px;
     }
     .usp-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 16px;
-      padding: 32px 24px;
+      padding: 30px 22px;
       text-align: center;
       transition: all 0.3s ease;
-      position: relative;
     }
     .usp-card:hover {
       border-color: var(--accent-orange);
-      transform: translateY(-5px);
+      transform: translateY(-4px);
       background: var(--bg-card-hover);
     }
     .usp-icon {
-      width: 60px;
-      height: 60px;
+      width: 58px;
+      height: 58px;
       border-radius: 14px;
-      background: rgba(255, 94, 20, 0.1);
+      background: rgba(255, 94, 20, 0.12);
       color: var(--accent-orange);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .usp-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       margin-bottom: 10px;
     }
     .usp-card p {
       color: var(--text-gray);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
-    /* Detailed Features Grid */
+    /* Showcase Layout (9:16 Aspect Mockup) */
+    .showcase-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      margin: 40px 0;
+    }
+    .tall-img-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .tall-img-wrap img {
+      max-height: 480px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
+    }
+
+    /* Features Grid */
     .features-section {
-      padding: 60px 0 100px;
-      border-top: 1px solid var(--border-color);
+      padding: 40px 0 80px;
     }
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+      gap: 18px;
     }
     .feature-item {
-      background: rgba(21, 26, 35, 0.6);
+      background: rgba(21, 26, 35, 0.65);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 24px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
     .feature-item i {
       color: var(--accent-green);
     }
     .feature-item h4 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
     }
     .feature-item p {
       color: var(--text-gray);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    /* Sticky Bottom Mobile Bar */
-    .bottom-cta-bar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(11, 14, 20, 0.95);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border-color);
-      padding: 16px 24px;
-      z-index: 99;
-      display: none;
-      text-align: center;
-    }
-    .bottom-cta-bar .btn-cta {
-      width: 100%;
-      padding: 16px 20px;
-      font-size: 1.1rem;
+      font-size: 0.88rem;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--border-color);
-      padding: 40px 0 80px;
+      padding: 40px 0;
       text-align: center;
       color: var(--text-gray);
       font-size: 0.9rem;
     }
 
-    /* Responsive Queries */
+    /* Responsive */
+    @media (min-width: 1024px) {
+      .ad-sidebar-desktop {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 40px 0;
+      }
+    }
+
     @media (max-width: 992px) {
-      .hero-grid {
+      .hero-grid, .showcase-strip {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 40px;
+        gap: 36px;
       }
       .hero-title {
-        font-size: 3rem;
-      }
-      .product-image-box {
-        max-width: 480px;
-        margin: 0 auto;
+        font-size: 2.8rem;
       }
       .usps-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .product-column {
+        width: 100%;
+      }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 640px) {
       .hero-title {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
       }
       .usps-grid {
         grid-template-columns: 1fr;
       }
-      .btn-cta {
-        width: 100%;
+      .showcase-strip {
+        padding: 24px;
       }
-      .bottom-cta-bar {
-        display: block;
+      .tall-img-wrap img {
+        max-height: 380px;
       }
-      body {
-        padding-bottom: 70px;
+      .btn-check-price {
+        font-size: 1.15rem;
+        padding: 18px 24px;
       }
     }
   </style>
@@ -346,19 +366,33 @@
 
   <div class="glow-bg"></div>
 
+  <!-- Header (No Buttons) -->
   <header>
-    <div class="container nav-container">
+    <div class="container">
       <div class="logo">
         <i data-lucide="radio" style="color: var(--accent-orange);"></i> Em<span>Phone</span>
       </div>
-      <a href="https://t.co/zZgtOy0bAE" target="_blank" class="btn-cta" style="padding: 10px 24px; font-size: 0.95rem;">
-        Check Price
-      </a>
     </div>
   </header>
 
+  <!-- Top Banner Ad (Format: 468x60) -->
+  <div class="container ad-slot">
+    <script>
+      atOptions = {
+        'key' : 'cb1f0b6c34e27f0295e35ef9cbb2436e',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highrevenueformat.com/cb1f0b6c34e27f0295e35ef9cbb2436e/invoke.js"></script>
+  </div>
+
+  <!-- Hero Section -->
   <section class="hero">
     <div class="container hero-grid">
+      <!-- Left Info -->
       <div class="hero-content">
         <div class="tagline-badge">
           <i data-lucide="shield-alert"></i> Built To Keep You Connected
@@ -367,128 +401,219 @@
         <p class="hero-subtitle">
           Engineered for extreme durability, zero distractions, physical dial controls, and mission-critical voice communication in the harshest environments.
         </p>
-        <a href="https://t.co/zZgtOy0bAE" target="_blank" class="btn-cta">
-          Check Price <i data-lucide="arrow-right"></i>
-        </a>
       </div>
 
-      <div class="product-image-box">
-        <img src="https://res.cloudinary.com/dhj4ovvav/image/upload/v1788164048/ChatGPT_Image_Aug_31_2026_01_50_13_PM_rudpgc.png" alt="EmPhone Rugged Device" />
+      <!-- Right Column: Square Image + Big Check Price Button -->
+      <div class="product-column">
+        <div class="square-image-container">
+          <img src="https://res.cloudinary.com/dhj4ovvav/image/upload/v1788164048/ChatGPT_Image_Aug_31_2026_01_50_13_PM_rudpgc.png" alt="EmPhone Rugged Device" />
+        </div>
+        <a href="https://t.co/zZgtOy0bAE" target="_blank" class="btn-check-price">
+          Check Price <i data-lucide="arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- Mobile Ad Banner (Format: 320x50) -->
+  <div class="container ad-slot">
+    <script>
+      atOptions = {
+        'key' : '40dc1ad928dae0ae6748bec4e1a074f8',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highrevenueformat.com/40dc1ad928dae0ae6748bec4e1a074f8/invoke.js"></script>
+  </div>
+
+  <!-- Core USPs Section -->
   <section class="usps-section">
     <div class="container">
       <div class="section-header">
         <h2>Mission-Critical Capabilities</h2>
-        <p>Built for field workers, outdoor adventurers, and professionals needing real communication over hype.</p>
+        <p>Built for field workers, outdoor adventurers, and heavy industrial tasks requiring real communication over hype.</p>
       </div>
 
       <div class="usps-grid">
         <div class="usp-card">
           <div class="usp-icon"><i data-lucide="radio"></i></div>
           <h3>Instant Communication</h3>
-          <p>Walkie-talkie style Push-to-Talk (PTT) allows one-touch instant voice broadcast without dialing delays.</p>
+          <p>Push-to-Talk (PTT) interface allows one-touch instant voice broadcast without dialing or application delays.</p>
         </div>
+
         <div class="usp-card">
           <div class="usp-icon"><i data-lucide="volume-2"></i></div>
           <h3>Powerful Clear Audio</h3>
-          <p>Ultra-loud high-output speaker paired with noise-cancellation ensures crystal-clear voice on noisy jobsites.</p>
+          <p>Ultra-loud acoustic speaker paired with dual-mic noise cancellation guarantees crystal-clear voice clarity on active sites.</p>
         </div>
+
         <div class="usp-card">
           <div class="usp-icon"><i data-lucide="shield-check"></i></div>
           <h3>Built for Tough Conditions</h3>
-          <p>Reinforced shock-absorbing chassis, corner bumpers, and all-weather resistance to survive heavy drops and mud.</p>
+          <p>Reinforced drop-proof construction, protective corner bumpers, and sealed body engineered to withstand mud, rain, and impacts.</p>
         </div>
+
         <div class="usp-card">
           <div class="usp-icon"><i data-lucide="battery-charging"></i></div>
-          <h3>Multi-Day Battery</h3>
-          <p>Massive battery capacity providing days of uninterrupted power without requiring constant recharges.</p>
+          <h3>Multi-Day Battery Life</h3>
+          <p>Massive battery capacity providing continuous field reliability and long-lasting standby without frequent recharging.</p>
         </div>
+
         <div class="usp-card">
           <div class="usp-icon"><i data-lucide="alert-triangle"></i></div>
-          <h3>One-Touch SOS Emergency</h3>
-          <p>Dedicated physical emergency beacon button triggers immediate alerts and coordinates to predefined contacts.</p>
+          <h3>One-Touch SOS Button</h3>
+          <p>Dedicated physical emergency beacon button triggers instant alarms and automated alerts directly to predefined contacts.</p>
         </div>
+
         <div class="usp-card">
           <div class="usp-icon"><i data-lucide="sliders"></i></div>
           <h3>Physical Controls & Dials</h3>
-          <p>Gloves-friendly tactile keypad and dedicated physical volume dials. Zero swiping, zero guesswork.</p>
+          <p>Gloves-friendly large tactile keypad and dedicated physical volume knobs. No endless swiping, no touchscreen failure.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Native Banner Ad (Placed in the exact middle of main content) -->
+  <div class="container ad-slot">
+    <script async="async" data-cfasync="false" src="https://pl30115573.profitableratecpmnetwork.com/09d5b3dba081e537545c7fc7fa968737/invoke.js"></script>
+    <div id="container-09d5b3dba081e537545c7fc7fa968737"></div>
+  </div>
+
+  <!-- Showcase Section: Transparent 9:16 Profile -->
+  <section class="container">
+    <div class="showcase-strip">
+      <div class="tall-img-wrap">
+        <img src="https://res.cloudinary.com/dhj4ovvav/image/upload/v1788165093/trans_mmmauo.png" alt="EmPhone Transparent View" />
+      </div>
+      <div>
+        <div class="tagline-badge">
+          <i data-lucide="wrench"></i> Built for Demanding Hands
+        </div>
+        <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 16px;">Tactile Engineering in Every Detail</h2>
+        <p style="color: var(--text-gray); margin-bottom: 24px;">
+          From heavy-duty side-mounted volume dials to responsive keypad switches, every component is sealed against dust and water, accessible even with heavy protective work gloves.
+        </p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <div style="background: rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border-color);">
+            <strong>Zero Distraction</strong>
+            <p style="font-size: 0.85rem; color: var(--text-gray);">Focus purely on work & voice</p>
+          </div>
+          <div style="background: rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border-color);">
+            <strong>All-Weather Ready</strong>
+            <p style="font-size: 0.85rem; color: var(--text-gray);">Operates through rain & snow</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sidebar Ads on Desktop / Stacked on Mobile (Format: 160x300 & 160x600) -->
+  <div class="container ad-sidebar-desktop">
+    <div>
+      <script>
+        atOptions = {
+          'key' : '34f585aac7adfa13fae1a76a24a6cb16',
+          'format' : 'iframe',
+          'height' : 300,
+          'width' : 160,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highrevenueformat.com/34f585aac7adfa13fae1a76a24a6cb16/invoke.js"></script>
+    </div>
+    <div>
+      <script>
+        atOptions = {
+          'key' : '39fbfbae2dd36256117a3c77122b9dd3',
+          'format' : 'iframe',
+          'height' : 600,
+          'width' : 160,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highrevenueformat.com/39fbfbae2dd36256117a3c77122b9dd3/invoke.js"></script>
+    </div>
+  </div>
+
+  <!-- Extended Features Grid -->
   <section class="features-section">
     <div class="container">
       <div class="section-header">
         <h2>Engineered Without Compromise</h2>
-        <p>Every single feature is tailored for outdoor reliability and operational readiness.</p>
+        <p>Built for field operations, security patrols, search & rescue, and extreme outdoor expeditions.</p>
       </div>
 
       <div class="features-grid">
         <div class="feature-item">
           <i data-lucide="sun"></i>
-          <h4>Always-Readable Display</h4>
-          <p>High-contrast, glare-resistant screen designed for instant glanceability under direct sunlight.</p>
+          <h4>Always-Readable Screen</h4>
+          <p>High-contrast, anti-glare display for rapid status checks directly under direct sunlight.</p>
         </div>
         <div class="feature-item">
           <i data-lucide="bell-off"></i>
-          <h4>Distraction-Free Experience</h4>
-          <p>No social media clutter, pop-up ads, or endless notifications—strictly focused on vital comms.</p>
+          <h4>Distraction-Free UX</h4>
+          <p>No endless apps, notifications, or social feeds—solely focused on active communication.</p>
         </div>
         <div class="feature-item">
           <i data-lucide="cloud-rain"></i>
-          <h4>All-Weather Sealed Ports</h4>
-          <p>Protected rubber-sealed port covers keep dirt, moisture, and rain from penetrating internal components.</p>
+          <h4>All-Weather Construction</h4>
+          <p>Water-repellent sealed ports keep sand, dirt, rain, and grease from entering internal slots.</p>
         </div>
         <div class="feature-item">
           <i data-lucide="mic"></i>
-          <h4>Dual-Mic Noise Cancellation</h4>
-          <p>Smart filters eliminate high-velocity wind, industrial motor noise, and background chatter.</p>
+          <h4>Noise-Cancelled Mic</h4>
+          <p>Suppresses background wind, machine rumble, and engine roar for audible voice clarity.</p>
         </div>
         <div class="feature-item">
           <i data-lucide="flashlight"></i>
-          <h4>Built-in Tactical Flashlight</h4>
-          <p>High-lumen integrated top beam for path navigation and night inspection work in the dark.</p>
+          <h4>Tactical Flashlight</h4>
+          <p>High-output top LED torch for night-time navigation and hazardous worksite inspection.</p>
         </div>
         <div class="feature-item">
           <i data-lucide="wrench"></i>
-          <h4>Field-Serviceable Architecture</h4>
-          <p>Rugged modular structure allows quick panel replacements and battery swaps in the field.</p>
+          <h4>Serviceable Body</h4>
+          <p>Reinforced modular outer frame designed for reliable field serviceability.</p>
         </div>
         <div class="feature-item">
           <i data-lucide="compass"></i>
-          <h4>Outdoor & Adventure Ready</h4>
-          <p>Optimized for search & rescue, hiking, security patrols, fishing, heavy construction, and camping.</p>
+          <h4>Outdoor Ready</h4>
+          <p>Tailored specifically for hiking, camping, fishing, logistics, and emergency dispatch.</p>
         </div>
         <div class="feature-item">
           <i data-lucide="antenna"></i>
-          <h4>Extended Antenna Mode</h4>
-          <p>Equipped for enhanced reception stability even in weak cellular coverage boundaries.</p>
+          <h4>High-Gain Antenna</h4>
+          <p>Solid antenna design providing dependable link quality in remote field environments.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="bottom-cta-bar">
-    <a href="https://t.co/zZgtOy0bAE" target="_blank" class="btn-cta">
-      Check Price <i data-lucide="arrow-right"></i>
-    </a>
+  <!-- Bottom Rectangle Ad (Format: 300x250) -->
+  <div class="container ad-slot">
+    <script>
+      atOptions = {
+        'key' : 'd842d2a7b0a66324471688b86c6073ca',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    </script>
+    <script src="https://www.highrevenueformat.com/d842d2a7b0a66324471688b86c6073ca/invoke.js"></script>
   </div>
 
-<!--Adsterra Ad Tag-->
-<script async="async" data-cfasync="false" src="https://pl30134735.profitableratecpmnetwork.com/19bdebcbe6969a7e5884ab0a384f1f1d/invoke.js"></script>
-<div id="container-19bdebcbe6969a7e5884ab0a384f1f1d"></div>
-<!--End Nativ Banner-->
-
+  <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2026 EmPhone. All Rights Reserved. Built for Resilience.</p>
+      <p>&copy; 2026 EmPhone. Built for Resilience. All Rights Reserved.</p>
     </div>
   </footer>
 
+  <!-- Lucide Icon Renderer -->
   <script>
     lucide.createIcons();
   </script>
