@@ -115,3 +115,64 @@ html.dark .mission {
   line-height: 1.7;
 }
 
+
+/* Advertisement Banner */
+
+.ad-banner-section {
+  padding: 10px 0 50px;
+}
+
+.ad-label {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--muted-color);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.ad-banner-link {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: box-shadow 0.25s ease;
+}
+
+.ad-banner-link:last-child {
+  margin-bottom: 0;
+}
+
+.ad-banner-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  object-fit: cover;
+}
+
+/* Light hover shadow */
+.ad-banner-link:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+html.dark .ad-banner-link {
+  background-color: #1e293b;
+}
+
+@media (max-width: 768px) {
+  .ad-banner-section {
+    padding: 5px 0 35px;
+  }
+
+  .ad-banner-link {
+    border-radius: 7px;
+  }
+
+  .ad-label {
+    font-size: 9px;
+    margin-bottom: 6px;
+  }
+}
