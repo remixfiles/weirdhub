@@ -27,7 +27,7 @@ function createNavbar() {
             <div class="dropdown-content">
               <a href="/blogs/update-of-science/">Update of Science</a>
               <a href="/blogs/ai-facts/">AI Facts</a>
-              <a href="/blogs/political-news/">Political News</a>
+              <a href="/blogs/brave-works/">Brave Works</a>
               <a href="/blogs/hot-topics/">Hot Topics</a>
               <a href="/blogs/war-update/">War Update</a>
               <a href="/blogs/historical-places/">Historical Places</a>
@@ -64,7 +64,7 @@ function createFooter() {
           <ul>
             <li><a href="/blogs/">All Blogs</a></li>
             <li><a href="/blogs/weird-hub/">Weird Hub</a></li>
-            <li><a href="/blogs/ai-facts/">AI Facts</a></li>
+            <li><a href="/blogs/animals/">Animal Facts</a></li>
             <li><a href="/blogs/update-of-science/">Science Updates</a></li>
           </ul>
         </div>
