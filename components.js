@@ -26,7 +26,7 @@ function createNavbar() {
             </button>
             <div class="dropdown-content">
               <a href="/blogs/update-of-science/">Update of Science</a>
-              <a href="/blogs/ai-facts/">AI Facts</a>
+              <a href="/blogs/animals/">Animal Facts</a>
               <a href="/blogs/brave-works/">Brave Works</a>
               <a href="/blogs/hot-topics/">Hot Topics</a>
               <a href="/blogs/war-update/">War Update</a>
