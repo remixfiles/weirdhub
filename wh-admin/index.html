@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Publisher • WeirdHub</title>
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/post.css">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+<style>
+    /* ========================= */
+    /* Blog Post Generator - Light & Dark Mode */
+    /* ========================= */
+
+    :root {
+        /* Light Mode */
+        --bg-primary: #f8f9fa;
+        --bg-card: #ffffff;
+        --bg-input: #f1f3f5;
+        --border-color: #dee2e6;
+        --accent: #ff7a3d;
+        --text-primary: #212529;
+        --text-secondary: #495057;
+        --text-label: #6c757d;
+        --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    body.dark-mode {
+        /* Dark Mode */
+        --bg-primary: #121212;
+        --bg-card: #1f1f1f;
+        --bg-input: #2a2a2a;
+        --border-color: #444;
+        --accent: #ff7a3d;
+        --text-primary: #f0f0f0;
+        --text-secondary: #bbbbbb;
+        --text-label: #aaa;
+        --shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    body {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        line-height: 1.65;
+        font-size: 17px;
+        transition: background 0.4s, color 0.4s;
+    }
+
+    .page-header {
+        background: linear-gradient(135deg, var(--bg-card), #1a1a1a);
+        padding: 45px 0 35px;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 30px;
+        color: var(--text-primary);
+    }
+
+    .generator-container {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    .section-title {
+        font-size: 1.35rem;
+        margin-bottom: 18px;
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .form-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        padding: 28px;
+        box-shadow: var(--shadow);
+        margin-bottom: 28px;
+        border-radius: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 1.02rem;
+        color: var(--text-label);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100% !important;     /* সবগুলোকে সমান করা হয়েছে */
+        padding: 14px 17px;
+        border: 1.5px solid var(--border-color);
+        background: var(--bg-input);
+        color: var(--text-primary);
+        font-size: 16.5px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;     /* এটি খুব জরুরি */
+    }
+
+    .form-group textarea {
+        min-height: 130px;
+        resize: vertical;
+        font-size: 16.5px;
+    }
+
+    /* সব ফর্ম গ্রুপকে আরও সুন্দর ও সমান করা */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(255, 122, 61, 0.15);
+        background: var(--bg-input);
+    }
+
+    textarea {
+        min-height: 130px;
+        resize: vertical;
+        font-size: 16.5px;
+    }
+
+  
+    #full-article {
+        min-height: 520px;
+        resize: vertical;
+        line-height: 1.7;
+    }
+
+    .btn-row button {
+        padding: 18px;
+        font-size: 1.08rem;
+        font-weight: 700;
+    }
+
+    .btn-blog {
+        background: var(--accent);
+    }
+
+
+    .publish-status {
+        margin-top: 14px;
+        padding: 12px 15px;
+        border-radius: 8px;
+        display: none;
+        font-size: 15px;
+        font-weight: 600;
+        background: var(--bg-input);
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+    }
+    /* Mode Toggle */
+    .mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 18px;
+        background: var(--accent);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 14.5px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+</style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <button class="mode-toggle" id="modeToggle">🌙 Dark Mode</button>
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="generator-container">
+      <h1 style="font-size:2.4rem; margin-bottom:4px;">WeirdHub Blog Publisher</h1>
+      <p style="color:#555;">WeirdHub • Secure Publishing</p>
+    </div>
+  </div>
+
+  <div class="generator-container">
+
+    <!-- Authentication -->
+    <div class="form-card">
+      <h3 class="section-title">Authentication</h3>
+      <div class="form-group">
+        <label>Pass1</label>
+        <input type="password" id="pass1" placeholder="Enter Pass1" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>Pass2</label>
+        <input type="password" id="pass2" placeholder="Enter Pass2" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- Post Details -->
+    <div class="form-card">
+      <h3 class="section-title">Post Details</h3>
+
+      <div class="form-group">
+        <label>Slug</label>
+        <input type="text" id="post-slug" placeholder="how-ai-is-changing-everyday-life">
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select id="post-category">
+          <option value="Update of Science">Update of Science</option>
+          <option value="Animal Facts">Animal Facts</option>
+          <option value="Brave Works">Brave Works</option>
+          <option value="Hot Topics">Hot Topics</option>
+          <option value="War History">War History</option>
+          <option value="Historical Places">Historical Places</option>
+          <option value="Weird Hub">Weird Hub</option>
+          <option value="Famous Persons">Famous Persons</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Author</label>
+        <input type="text" id="post-author" placeholder="Dr. Marcus Hale">
+      </div>
+
+<div class="form-group">
+  <label>Featured Image URL</label>
+  <input type="text" id="featured-image"
+         placeholder="https://picsum.photos/id/201/900/600">
+</div>
+
+<div class="form-group">
+  <label>Meta Description</label>
+  <textarea id="meta-description"
+            placeholder="Write a short SEO description (150-160 characters)..."></textarea>
+</div>
+
+<div class="form-group">
+  <label>References (One reference per line)</label>
+  <textarea
+    id="references"
+    placeholder="Society for the Protection of Underground Networks (SPUN) – A Hidden Infrastructure (2026)
+Science Journal (2026) – Global mapping of mycorrhizal fungal networks
+The Guardian (2026) – Scientists map Earth's underground fungal network
+Live Science (2026) – Earth's underground fungal network spans 110 quadrillion kilometers
+Popular Science (2026) – First global map reveals the hidden fungal infrastructure"></textarea>
+</div>
+    </div>
+
+    <!-- Full Article Content -->
+    <div class="form-card">
+      <h3 class="section-title">Full Article Content</h3>
+
+      <div class="form-group">
+        <label>Paste Full Article</label>
+        <textarea
+          id="full-article"
+          style="min-height:520px;"
+          placeholder="Paste the complete article here...
+
+First block = Title
+
+Second block = H2
+
+Third block = Paragraph
+
+Fourth block = H2
+
+Fifth block = Paragraph
+
+Continue with H2 + Paragraph blocks..."></textarea>
+      </div>
+    </div>
+
+    <!-- Publish -->
+    <div class="btn-row">
+      <button type="button" onclick="publishPost()" class="btn-blog" id="publishBtn">Publish</button>
+    </div>
+    <div id="publish-status" class="publish-status"></div>
+
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/components.js"></script>
+  <script>
+
+    // Apps Script Web App URL
+    // Replace this with your deployed Google Apps Script Web App URL.
+    const PUBLISH_ENDPOINT = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+    async function publishPost() {
+      const button = document.getElementById('publishBtn');
+      const status = document.getElementById('publish-status');
+      const pass1 = document.getElementById('pass1').value;
+      const pass2 = document.getElementById('pass2').value;
+      const slug = document.getElementById('post-slug').value.trim();
+      const category = document.getElementById('post-category').value;
+      const author = document.getElementById('post-author').value.trim();
+      const featuredImage = document.getElementById('featured-image').value.trim();
+      const metaDescription = document.getElementById('meta-description').value.trim();
+      const references = document.getElementById('references').value.trim();
+      const fullArticle = document.getElementById('full-article').value.trim();
+
+      if (!pass1 || !pass2) {
+        showPublishStatus('Please enter both Pass1 and Pass2.', true);
+        return;
+      }
+      if (!slug) {
+        showPublishStatus('Please enter the post slug.', true);
+        return;
+      }
+      if (!featuredImage) {
+        showPublishStatus('Please enter the Featured Image URL.', true);
+        return;
+      }
+      if (!fullArticle) {
+        showPublishStatus('Please paste the full article.', true);
+        return;
+      }
+      if (PUBLISH_ENDPOINT === 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE') {
+        showPublishStatus('Apps Script Web App URL is not configured yet.', true);
+        return;
+      }
+
+      const payload = {
+        pass1,
+        pass2,
+        slug,
+        category,
+        author,
+        featuredImage,
+        metaDescription,
+        references,
+        fullArticle
+      };
+
+      button.disabled = true;
+      button.textContent = 'Publishing...';
+      showPublishStatus('Sending publish request...', false);
+
+      try {
+        const response = await fetch(PUBLISH_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Publishing failed.');
+        }
+
+        showPublishStatus(result.message || 'Published successfully.', false);
+      } catch (error) {
+        showPublishStatus(error.message || 'Publishing failed.', true);
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Publish';
+      }
+    }
+
+    function showPublishStatus(message, isError) {
+      const status = document.getElementById('publish-status');
+      status.textContent = message;
+      status.style.display = 'block';
+      status.style.borderColor = isError ? '#dc3545' : 'var(--border-color)';
+    }
+
+  </script>
+  <script>
+    const toggleBtn = document.getElementById('modeToggle');
+    const body = document.body;
+
+    toggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            toggleBtn.textContent = '☀️ Light Mode';
+        } else {
+            toggleBtn.textContent = '🌙 Dark Mode';
+        }
+    });
+
+
+    body.classList.add('dark-mode');
+</script>
+</body>
+</html>
