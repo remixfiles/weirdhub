@@ -1,100 +1,5 @@
-// components.js - Navbar, Footer injection + interactivity for all pages
+// components.js - Interactivity and Card Renderers for WeirdHub
 // Vanilla JS only
-
-function createNavbar() {
-  return `
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="/" class="logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="50" cy="50" r="42" fill="none" stroke="#D35400" stroke-width="7"/>
-            <path d="M35 38 Q50 28 65 38" fill="none" stroke="#D35400" stroke-width="6" stroke-linecap="round"/>
-            <circle cx="50" cy="55" r="6" fill="#D35400"/>
-            <line x1="50" y1="61" x2="50" y2="72" stroke="#D35400" stroke-width="5" stroke-linecap="round"/>
-          </svg>
-          <span>WeirdHub</span>
-        </a>
-
-        <div class="nav-links" id="nav-links">
-          <a href="/" class="nav-link" data-path="/">Home</a>
-          <a href="/blogs/" class="nav-link" data-path="/blogs/">Blogs</a>
-          
-          <div class="dropdown">
-            <button class="nav-link dropdown-btn" aria-haspopup="true" aria-expanded="false">
-              Categories 
-              <span style="font-size:0.7em; margin-left:2px;">▼</span>
-            </button>
-            <div class="dropdown-content">
-              <a href="/blogs/update-of-science/">Update of Science</a>
-              <a href="/blogs/animals/">Animal Facts</a>
-              <a href="/blogs/brave-works/">Brave Works</a>
-              <a href="/blogs/hot-topics/">Hot Topics</a>
-              <a href="/blogs/war-history/">War History</a>
-              <a href="/blogs/historical-places/">Historical Places</a>
-              <a href="/blogs/weird-hub/">Weird Hub</a>
-              <a href="/blogs/famous-persons/">Famous Persons</a>
-            </div>
-          </div>
-
-          <a href="/about/" class="nav-link" data-path="/about/">About</a>
-          <a href="/contact-us/" class="nav-link" data-path="/contact-us/">Contact Us</a>
-        </div>
-
-        <div class="nav-actions">
-          <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">🌙</button>
-          <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-        </div>
-      </div>
-    </nav>
-  `;
-}
-
-function createFooter() {
-  const year = new Date().getFullYear();
-  return `
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-col">
-          <h4>WeirdHub</h4>
-          <p style="color: var(--muted-color); font-size:0.9rem; line-height:1.6;">Exploring intriguing topics from every corner of the world.</p>
-        </div>
-        
-        <div class="footer-col">
-          <h4>Explore</h4>
-          <ul>
-            <li><a href="/blogs/">All Blogs</a></li>
-            <li><a href="/blogs/weird-hub/">Weird Hub</a></li>
-            <li><a href="/blogs/animals/">Animal Facts</a></li>
-            <li><a href="/blogs/update-of-science/">Science Updates</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="/about/">About Us</a></li>
-            <li><a href="/author-message/">Author's Message</a></li>
-            <li><a href="/contact-us/">Contact Us</a></li>
-            <li><a href="/privacy-policy/">Privacy Policy</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92" target="_blank" rel="noopener">Twitter / X</a></li>
-            <li><a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92" target="_blank" rel="noopener">Newsletter</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; ${year} WeirdHub. All rights reserved. | Built for curious minds worldwide.</p>
-      </div>
-    </footer>
-  `;
-}
 
 function setActiveNavLinks() {
   const currentPath = window.location.pathname;
@@ -114,7 +19,6 @@ function setupThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
   if (!toggleBtn) return;
 
-  // Set initial icon
   const currentTheme = localStorage.getItem('theme') || 'light';
   if (currentTheme === 'dark') {
     document.documentElement.classList.add('dark');
@@ -140,7 +44,6 @@ function setupMobileMenu() {
     menuBtn.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
   });
 
-  // Close menu when clicking a link (mobile)
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 900) {
@@ -150,7 +53,6 @@ function setupMobileMenu() {
     });
   });
 
-  // Close dropdowns or menu on outside click (optional enhancement)
   document.addEventListener('click', (e) => {
     if (!navLinks.contains(e.target) && !menuBtn.contains(e.target) && navLinks.classList.contains('open')) {
       navLinks.classList.remove('open');
@@ -160,7 +62,6 @@ function setupMobileMenu() {
 }
 
 function setupDropdownKeyboard() {
-  // Basic accessibility for dropdown
   const dropdowns = document.querySelectorAll('.dropdown');
   dropdowns.forEach(dropdown => {
     const btn = dropdown.querySelector('.dropdown-btn');
@@ -174,7 +75,6 @@ function setupDropdownKeyboard() {
       btn.setAttribute('aria-expanded', !isOpen);
     });
 
-    // Close on escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && content.style.display === 'block') {
         content.style.display = 'none';
@@ -184,132 +84,63 @@ function setupDropdownKeyboard() {
   });
 }
 
-function injectComponents() {
-  // Inject Navbar
-  const navPlaceholder = document.getElementById('navbar-placeholder');
-  if (navPlaceholder) {
-    navPlaceholder.innerHTML = createNavbar();
-  }
-
-  // Inject Footer
-  const footerPlaceholder = document.getElementById('footer-placeholder');
-  if (footerPlaceholder) {
-    footerPlaceholder.innerHTML = createFooter();
-  }
-
-  // Setup all interactivity after injection
-  setActiveNavLinks();
-  setupThemeToggle();
-  setupMobileMenu();
-  setupDropdownKeyboard();
-}
-
-// Auto run on every page
-document.addEventListener('DOMContentLoaded', injectComponents);
-
-
-
-// ========= Homepage Cards Render ========
+// ========= Homepage & Post Cards Render ========
 
 let blogPosts = [];
 
 async function loadBlogPosts() {
+  if (blogPosts.length) return blogPosts;
 
-    if (blogPosts.length) return blogPosts;
-
-    try {
-
-        const response = await fetch("/blogpost.json");
-
-        blogPosts = await response.json();
-
-        return blogPosts;
-
-    } catch (err) {
-
-        console.error("Failed to load blogpost.json", err);
-
-        return [];
-
-    }
-
+  try {
+    const response = await fetch("/blogpost.json");
+    blogPosts = await response.json();
+    return blogPosts;
+  } catch (err) {
+    console.error("Failed to load blogpost.json", err);
+    return [];
+  }
 }
 
-function createPostCard(post){
-
-    return `
-        <a href="${post.link}" class="post-card">
-            <img
-                src="${post.featuredImage}"
-                alt="${post.title}"
-                loading="lazy"
-                decoding="async">
-
-            <div class="post-card-content">
-                <h3>${post.title}</h3>
-            </div>
-        </a>
-    `;
-
+function createPostCard(post) {
+  return `
+    <a href="${post.link}" class="post-card">
+      <img
+        src="${post.featuredImage}"
+        alt="${post.title}"
+        loading="lazy"
+        decoding="async">
+      <div class="post-card-content">
+        <h3>${post.title}</h3>
+      </div>
+    </a>
+  `;
 }
 
-function shuffle(array){
-
-    const arr=[...array];
-
-    for(let i=arr.length-1;i>0;i--){
-
-        const j=Math.floor(Math.random()*(i+1));
-
-        [arr[i],arr[j]]=[arr[j],arr[i]];
-
-    }
-
-    return arr;
-
+function shuffle(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
-async function renderLatestPosts(){
+async function renderLatestPosts() {
+  const container = document.getElementById("latest-posts");
+  if (!container) return;
 
-    const container=document.getElementById("latest-posts");
-
-    if(!container) return;
-
-    const posts=await loadBlogPosts();
-
-    container.innerHTML=shuffle(posts)
-        .slice(0,6)
-        .map(createPostCard)
-        .join("");
-
+  const posts = await loadBlogPosts();
+  container.innerHTML = shuffle(posts)
+    .slice(0, 6)
+    .map(createPostCard)
+    .join("");
 }
 
-async function renderMorePosts(){
-
-    const container=document.getElementById("more-posts");
-
-    if(!container) return;
-
-    const posts=await loadBlogPosts();
-
-    const currentSlug = location.pathname
-    .replace(/\/$/, "")
-    .split("/")
-    .pop();
-
-container.innerHTML = shuffle(
-    posts.filter(post => post.postSlug !== currentSlug)
-)
-.slice(0,6)
-.map(createPostCard)
-.join("");
-
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-    renderLatestPosts();
-
-    renderMorePosts();
-
+// Initialize all UI events and homepage post loader
+document.addEventListener('DOMContentLoaded', () => {
+  setActiveNavLinks();
+  setupThemeToggle();
+  setupMobileMenu();
+  setupDropdownKeyboard();
+  renderLatestPosts();
 });
