@@ -139,6 +139,50 @@
         margin-bottom: 0;
     }
 
+    .featured-image-row {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+.featured-image-row input {
+    flex: 1;
+    min-width: 0;
+}
+.image-upload-btn {
+    flex: 0 0 auto;
+    padding: 0 18px;
+    border: 1.5px solid var(--accent);
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.image-upload-btn:hover:not(:disabled) {
+    background: var(--accent-hover);
+}
+.image-upload-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+.image-upload-status {
+    display: none;
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+@media (max-width: 600px) {
+    .featured-image-row {
+        gap: 6px;
+    }
+    .image-upload-btn {
+        padding: 0 13px;
+    }
+}
+
     .form-group label {
         display: block;
         font-weight: 600;
@@ -427,8 +471,13 @@
 
 <div class="form-group">
   <label>Featured Image URL</label>
-  <input type="text" id="featured-image"
-         placeholder="https://picsum.photos/id/201/900/600">
+  <div class="featured-image-row">
+    <input type="text" id="featured-image"
+           placeholder="Cloudinary image URL will appear here...">
+    <button type="button" id="image-upload-btn" class="image-upload-btn">Upload</button>
+    <input type="file" id="image-file-input" accept="image/*" hidden>
+  </div>
+  <div id="image-upload-status" class="image-upload-status"></div>
 </div>
 
 <div class="form-group">
@@ -490,6 +539,165 @@ Continue with H2 + Paragraph blocks..."></textarea>
     // Apps Script Web App URL
     // Replace this with your deployed Google Apps Script Web App URL.
     const PUBLISH_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx11Q8qJu94ecE3oXPRMs0_cGLjxJ91bC7Vj-DIjlK8J3VOUoMF0QBlBXDXfLwJKTcL/exec';
+
+
+    const imageFileInput = document.getElementById('image-file-input');
+const imageUploadBtn = document.getElementById('image-upload-btn');
+
+imageUploadBtn.addEventListener('click', () => {
+    imageFileInput.click();
+});
+
+imageFileInput.addEventListener('change', () => {
+    const file = imageFileInput.files && imageFileInput.files[0];
+    if (!file) return;
+    handleImageUpload(file);
+});
+
+async function handleImageUpload(file) {
+    const pass1 = document.getElementById('pass1').value;
+    const pass2 = document.getElementById('pass2').value;
+    const status = document.getElementById('image-upload-status');
+
+    if (!pass1 || !pass2) {
+        status.textContent = 'Please enter both Pass1 and Pass2 before uploading.';
+        status.style.display = 'block';
+        return;
+    }
+
+    if (!file.type.startsWith('image/')) {
+        status.textContent = 'Please select a valid image file.';
+        status.style.display = 'block';
+        return;
+    }
+
+    imageUploadBtn.disabled = true;
+    imageUploadBtn.textContent = 'Processing...';
+    status.textContent = 'Converting image to WebP...';
+    status.style.display = 'block';
+
+    const img = new Image();
+
+    img.onload = function() {
+        compressToWebP(img, file.name, 0);
+    };
+
+    img.onerror = function() {
+        imageUploadBtn.disabled = false;
+        imageUploadBtn.textContent = 'Upload';
+        status.textContent = 'Could not read the selected image.';
+        status.style.display = 'block';
+    };
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        img.src = event.target.result;
+    };
+
+    reader.onerror = function() {
+        imageUploadBtn.disabled = false;
+        imageUploadBtn.textContent = 'Upload';
+        status.textContent = 'Could not load the selected file.';
+        status.style.display = 'block';
+    };
+
+    reader.readAsDataURL(file);
+}
+
+/* Existing WebP conversion logic — unchanged */
+function compressToWebP(img, originalName, index) {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const scale = Math.min(1, 1280 / img.width);
+    canvas.width = img.width * scale;
+    canvas.height = img.height * scale;
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    let quality = 0.9;
+    (function loop() {
+        canvas.toBlob(blob => {
+            if (blob.size <= 100 * 1024 || quality <= 0.1) {
+                renderWebP(blob, originalName, index);
+            } else {
+                quality -= 0.05;
+                loop();
+            }
+        }, "image/webp", quality);
+    })();
+}
+
+async function renderWebP(blob, originalName, index) {
+    const status = document.getElementById('image-upload-status');
+
+    if (!blob) {
+        imageUploadBtn.disabled = false;
+        imageUploadBtn.textContent = 'Upload';
+        status.textContent = 'WebP conversion failed.';
+        status.style.display = 'block';
+        return;
+    }
+
+    status.textContent = 'WebP ready (' + (blob.size / 1024).toFixed(1) + ' KB). Uploading to Cloudinary...';
+
+    const reader = new FileReader();
+
+    reader.onloadend = async function() {
+        try {
+            const base64 = reader.result;
+
+            const payload = {
+                action: 'upload-image',
+                pass1: pass1ForImageUpload(),
+                pass2: pass2ForImageUpload(),
+                imageBase64: base64,
+                fileName: originalName
+            };
+
+            const response = await fetch(PUBLISH_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                throw new Error(result.message || 'Image upload failed.');
+            }
+
+            document.getElementById('featured-image').value = result.url;
+
+            try {
+                await navigator.clipboard.writeText(result.url);
+            } catch (clipboardError) {
+            }
+
+            status.textContent = '✓ Uploaded successfully (' + (blob.size / 1024).toFixed(1) + ' KB)';
+            status.style.display = 'block';
+
+        } catch (error) {
+            status.textContent = error.message || 'Image upload failed.';
+            status.style.display = 'block';
+        } finally {
+            imageUploadBtn.disabled = false;
+            imageUploadBtn.textContent = 'Upload';
+            imageFileInput.value = '';
+        }
+    };
+
+    reader.readAsDataURL(blob);
+}
+
+function pass1ForImageUpload() {
+    return document.getElementById('pass1').value;
+}
+
+function pass2ForImageUpload() {
+    return document.getElementById('pass2').value;
+}
+
 
     async function publishPost() {
       const button = document.getElementById('publishBtn');
