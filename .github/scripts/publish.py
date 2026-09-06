@@ -400,7 +400,28 @@ def main():
         fail("Pass2 verification failed.")
 
     slug = clean_slug(get_input("POST_SLUG"))
-    category = get_input("POST_CATEGORY")
+    category_input = get_input("POST_CATEGORY")
+    category_map = {
+        "update of science": "update-of-science",
+        "update-of-science": "update-of-science",
+        "animal facts": "animals",
+        "animals": "animals",
+        "brave works": "brave-works",
+        "brave-works": "brave-works",
+        "hot topics": "hot-topics",
+        "hot-topics": "hot-topics",
+        "war history": "war-history",
+        "war-history": "war-history",
+        "historical places": "historical-places",
+        "historical-places": "historical-places",
+        "weird hub": "weird-hub",
+        "weird-hub": "weird-hub",
+        "famous persons": "famous-persons",
+        "famous-persons": "famous-persons"
+    }
+    category = category_map.get(category_input.lower())
+    if not category:
+        fail(f"Invalid category: {category_input}")
     author = get_input("POST_AUTHOR")
     featured_image = get_input("FEATURED_IMAGE")
     meta_description = get_input("META_DESCRIPTION")
