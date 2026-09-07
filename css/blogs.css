@@ -61,3 +61,43 @@ html.dark .page-header {
 .category-header .tag {
   margin-bottom: 12px;
 }
+
+
+.load-more-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+.load-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--accent-color);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.load-more-btn:hover {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+.load-more-btn:active {
+  transform: translateY(0);
+}
+.load-more-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+.post-card[hidden] {
+  display: none !important;
+}
