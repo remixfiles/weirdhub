@@ -252,7 +252,7 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
 <meta name="theme-color" content="#111827">
 <link rel="stylesheet" href="/css/components.css">
 <link rel="stylesheet" href="/css/post.css">
-<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/images/favicon.ico">
 </head>
 <body>
   <nav class="navbar">
