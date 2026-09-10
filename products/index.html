@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সাদিয়ার সব ভিডিও একসাথে দেখুন</title>
+
+    <!-- Open Graph (OG) Tags: ৩/২ শেপের প্রিভিউ ইমেজ (1200x800) -->
+    <meta property="og:title" content="সাদিয়া - অফিসিয়াল পেজ ও এক্সক্লুসিভ ভিডিও ব্লগ">
+    <meta property="og:description" content="সাদিয়ার অফিসিয়াল পেজে ভিজিট করুন এবং সব নতুন ভিডিও ব্লগ উপভোগ করুন।">
+    <meta property="og:image" content="https://res.cloudinary.com/utofjg0n/image/upload/v1789062973/dc1gsjf0vd0c4dua43nf.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="সাদিয়া - অফিসিয়াল পেজ ও এক্সক্লুসিভ ভিডিও ব্লগ">
+    <meta name="twitter:description" content="সাদিয়ার সকল ভাইরাল ভিডিও দেখুন একসাথে ও ইনবক্সে নিন এখনই">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&h=800&q=80">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: #0b1120;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 15px 8px;
+        }
+
+        .main-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* সাইডবার অ্যাড (ডেস্কটপে দৃশ্যমান) */
+        .sidebar-ad {
+            display: none;
+            width: 160px;
+            position: sticky;
+            top: 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .sidebar-ad {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* মূল কনটেন্ট এরিয়া */
+        .content-area {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 0 auto;
+        }
+
+        /* রেসপনসিভ অ্যাড কনটেইনার */
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            overflow: hidden;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .ad-banner-top {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        /* প্রোফাইল কার্ড */
+        .profile-card {
+            background: #1e293b;
+            padding: 24px 16px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid #334155;
+        }
+
+        .profile-img-box {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 16px;
+            border-radius: 18px; /* স্কয়ার লুক */
+            overflow: hidden;
+            border: 3px solid #38bdf8;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .profile-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .profile-bio {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .btn-follow {
+            flex: 1;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: #ffffff;
+            border: none;
+        }
+
+        .btn-message {
+            flex: 1;
+            background: #334155;
+            color: #f1f5f9;
+            border: 1px solid #475569;
+        }
+
+        .btn-follow:hover, .btn-message:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        /* ভিডিও কার্ড সেকশন */
+        .video-card {
+            background: #1e293b;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #334155;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ৩/২ শেপের ইমেজ কনটেইনার */
+        .thumb-box {
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            overflow: hidden;
+            background-color: #0f172a;
+        }
+
+        .thumb-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover .thumb-box img {
+            transform: scale(1.03);
+        }
+
+        .video-content {
+            padding: 16px;
+            text-align: center;
+        }
+
+        .btn-video {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+        }
+
+        .btn-video:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        /* ফুটার */
+        footer {
+            margin-top: 15px;
+            padding: 20px 0 30px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            border-top: 1px solid #334155;
+        }
+
+        .share-box-wrapper {
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 16px;
+        padding: 20px 16px;
+        text-align: center;
+        margin: 15px 0;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .share-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #f8fafc;
+        margin-bottom: 14px;
+        line-height: 1.5;
+    }
+
+    .copy-container {
+        display: flex;
+        align-items: center;
+        background: #0f172a;
+        border: 1px solid #475569;
+        border-radius: 12px;
+        padding: 6px;
+        gap: 8px;
+    }
+
+    .copy-input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #38bdf8;
+        font-size: 0.95rem;
+        font-weight: 600;
+        padding: 8px 12px;
+        user-select: all;
+    }
+
+    .btn-copy {
+        background: linear-gradient(135deg, #0284c7, #2563eb);
+        color: #ffffff;
+        border: none;
+        padding: 10px 18px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+
+    .btn-copy:hover {
+        filter: brightness(1.1);
+        transform: scale(1.02);
+    }
+
+    .btn-copy.copied {
+        background: linear-gradient(135deg, #10b981, #059669);
+    }
+    </style>
+
+    <!-- ৫. Popunder: Closing head ট্যাগ এর আগে -->
+    <script src="https://pl30515219.profitableratecpmnetwork.com/86/25/55/862555af7966efd8d7daa37e8092ae08.js"></script>
+</head>
+<body>
+
+    <div class="main-wrapper">
+
+        <!-- বাম সাইডবার অ্যাড: ১ (160x600) -->
+        <aside class="sidebar-ad">
+            <script>
+                atOptions = {
+                    'key' : '1683d8a6cfabc81920d89fec36b76427',
+                    'format' : 'iframe',
+                    'height' : 600,
+                    'width' : 160,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/1683d8a6cfabc81920d89fec36b76427/invoke.js"></script>
+        </aside>
+
+        <!-- মূল কনটেন্ট -->
+        <main class="content-area">
+
+            <!-- টপ অ্যাড ২: (728x90) -->
+            <div class="ad-container ad-banner-top">
+                <script>
+                    atOptions = {
+                        'key' : '5ebefc94e4f0e85735dd4b14e68c9c9d',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highrevenueformat.com/5ebefc94e4f0e85735dd4b14e68c9c9d/invoke.js"></script>
+            </div>
+
+            <!-- প্রোফাইল কার্ড -->
+            <header class="profile-card">
+                <div class="profile-img-box">
+                    <img src="https://iili.io/CUq38hB.webp" alt="সাদিয়া">
+                </div>
+                <h1 class="profile-name">সাদিয়া</h1>
+                <p class="profile-bio">ভ্রমণ প্রিয় | লাইফস্টাইল কন্টেন্ট ক্রিয়েটর</p>
+                <div class="action-buttons">
+                    <a href="https://www.profitableratecpmnetwork.com/jcnn02c0d?key=6387cf8fe4b4da66277356a6607dd172" target="_blank" rel="noopener noreferrer" class="btn btn-follow">
+                        ফলো করুন
+                    </a>
+                    <a href="https://www.profitableratecpmnetwork.com/jcnn02c0d?key=6387cf8fe4b4da66277356a6607dd172" target="_blank" rel="noopener noreferrer" class="btn btn-message">
+                        মেসেজ দিন
+                    </a>
+                </div>
+            </header>
+
+            <!-- সেকশন ১: কক্সবাজার -->
+            <section class="video-card">
+                <div class="thumb-box">
+                    <img src="https://iili.io/ChNoBV9.webp" alt="কক্সবাজার">
+                </div>
+
+                <!-- ৭. ইমেজের নিচে অ্যাড (320x50) -->
+                <div class="ad-container">
+                    <script>
+                        atOptions = {
+                            'key' : 'cc037a5cabd2e4a4a795e4371b81936c',
+                            'format' : 'iframe',
+                            'height' : 50,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://www.highrevenueformat.com/cc037a5cabd2e4a4a795e4371b81936c/invoke.js"></script>
+                </div>
+
+                <div class="video-content">
+                    <a href="https://www.profitableratecpmnetwork.com/jcnn02c0d?key=6387cf8fe4b4da66277356a6607dd172" target="_blank" rel="noopener noreferrer" class="btn btn-video">
+                        ডাক্তার এর রুমে ভিডিও
+                    </a>
+                </div>
+            </section>
+
+            <!-- ৬. সেকশনের পরে অ্যাড (300x250) -->
+            <div class="ad-container">
+                <script>
+                    atOptions = {
+                        'key' : '3ece38e41c4d87ca89ab356a0a8bfe22',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highrevenueformat.com/3ece38e41c4d87ca89ab356a0a8bfe22/invoke.js"></script>
+            </div>
+
+            <!-- সেকশন ২: বান্দরবান -->
+            <section class="video-card">
+                <div class="thumb-box">
+                    <img src="https://iili.io/CDkZequ.webp" alt="বান্দরবান">
+                </div>
+
+                <!-- ৭. ইমেজের নিচে অ্যাড (320x50) -->
+                <div class="ad-container">
+                    <script>
+                        atOptions = {
+                            'key' : 'cc037a5cabd2e4a4a795e4371b81936c',
+                            'format' : 'iframe',
+                            'height' : 50,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://www.highrevenueformat.com/cc037a5cabd2e4a4a795e4371b81936c/invoke.js"></script>
+                </div>
+
+                <div class="video-content">
+                    <a href="https://www.profitableratecpmnetwork.com/jcnn02c0d?key=6387cf8fe4b4da66277356a6607dd172" target="_blank" rel="noopener noreferrer" class="btn btn-video">
+                        বড় মামার সাথে ভিডিও
+                    </a>
+                </div>
+            </section>
+
+            <!-- ৬. সেকশনের পরে অ্যাড (300x250) -->
+            <div class="ad-container">
+                <script>
+                    atOptions = {
+                        'key' : '3ece38e41c4d87ca89ab356a0a8bfe22',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highrevenueformat.com/3ece38e41c4d87ca89ab356a0a8bfe22/invoke.js"></script>
+            </div>
+
+            <!-- সেকশন ৩: সাজেক ভ্যালি -->
+            <section class="video-card">
+                <div class="thumb-box">
+                    <img src="https://imagex1.sx.cdn.live/images/pinporn/2017/10/07/18468536.jpg" alt="সাজেক ভ্যালি">
+                </div>
+
+                <!-- ৭. ইমেজের নিচে অ্যাড (320x50) -->
+                <div class="ad-container">
+                    <script>
+                        atOptions = {
+                            'key' : 'cc037a5cabd2e4a4a795e4371b81936c',
+                            'format' : 'iframe',
+                            'height' : 50,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://www.highrevenueformat.com/cc037a5cabd2e4a4a795e4371b81936c/invoke.js"></script>
+                </div>
+
+                <div class="video-content">
+                    <a href="https://www.profitableratecpmnetwork.com/jcnn02c0d?key=6387cf8fe4b4da66277356a6607dd172" target="_blank" rel="noopener noreferrer" class="btn btn-video">
+                        স্বামীর বন্ধুর সাথে
+                    </a>
+                </div>
+            </section>
+
+            <!-- ৬. সেকশনের পরে অ্যাড (300x250) -->
+            <div class="ad-container">
+                <script>
+                    atOptions = {
+                        'key' : '3ece38e41c4d87ca89ab356a0a8bfe22',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highrevenueformat.com/3ece38e41c4d87ca89ab356a0a8bfe22/invoke.js"></script>
+            </div>
+
+            <!-- অ্যাড ৪: ফুটারের উপরে ব্যানার (468x60) -->
+            <div class="ad-container">
+                <script>
+                    atOptions = {
+                        'key' : '65db7f8a50f699e6f8db28230129102b',
+                        'format' : 'iframe',
+                        'height' : 60,
+                        'width' : 468,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highrevenueformat.com/65db7f8a50f699e6f8db28230129102b/invoke.js"></script>
+            </div>
+
+            <!-- ১০. Native Banner: ফুটারের ঠিক আগে -->
+            <div class="ad-container" style="display: block; width: 100%;">
+                <script async="async" data-cfasync="false" src="https://pl30336661.profitableratecpmnetwork.com/908c825382c6702f06d11e8d89f457b5/invoke.js"></script>
+                <div id="container-908c825382c6702f06d11e8d89f457b5"></div>
+            </div>
+
+<div class="share-box-wrapper">
+    <p class="share-title">সকল ভিডিও একসাথে ইনবক্সে পেতে চান?? <br> তাহলে নিচের লেখাটি কপি করুন ও আপনার ৫ জন বন্ধুকে পাঠিয়ে দিন। সব ভিডিও ইনবক্সে চলে যাবে। </p>
+    
+    <div class="copy-container">
+        <input type="text" id="shareText" class="copy-input" value="HD Video: https://go.weirdhub.site/3od" readonly>
+        <button type="button" id="copyBtn" class="btn-copy" onclick="copyShareText()">
+            কপি করুন
+        </button>
+    </div>
+</div>
+
+<script>
+    function copyShareText() {
+        const textToCopy = document.getElementById("shareText").value;
+        const btn = document.getElementById("copyBtn");
+
+        // আধুনিক ক্লিপবোর্ড কপি মেথড (ফলব্যাক সহ)
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(textToCopy).then(onCopySuccess);
+        } else {
+            const input = document.getElementById("shareText");
+            input.select();
+            input.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            onCopySuccess();
+        }
+
+        function onCopySuccess() {
+            btn.innerText = "কপি হয়েছে! ✓";
+            btn.classList.add("copied");
+            setTimeout(() => {
+                btn.innerText = "কপি করুন";
+                btn.classList.remove("copied");
+            }, 2000);
+        }
+    }
+</script>
+            <footer>
+                <p>সাদিয়ার অফিসিয়াল পেজে আপনাকে স্বাগতম</p>
+                <p style="margin-top: 5px;">© 2026 সর্বস্বত্ব সংরক্ষিত</p>
+            </footer>
+
+        </main>
+
+        <!-- ডান সাইডবার অ্যাড: ৩ (160x300) -->
+        <aside class="sidebar-ad">
+            <script>
+                atOptions = {
+                    'key' : '779c4cfd966f93b721723d144c1d334f',
+                    'format' : 'iframe',
+                    'height' : 300,
+                    'width' : 160,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/779c4cfd966f93b721723d144c1d334f/invoke.js"></script>
+        </aside>
+
+    </div>
+
+
+    <script src="https://pl30336660.profitableratecpmnetwork.com/4d/81/82/4d8182472240f6419477c5ffe3198fdf.js"></script>
+</body>
+</html>
