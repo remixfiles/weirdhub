@@ -334,8 +334,8 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
       </div>
     </div>
   </section>
-<script async="async" data-cfasync="false" src="https://pl30134735.effectivecpmnetwork.com/19bdebcbe6969a7e5884ab0a384f1f1d/invoke.js"></script>
-<div id="container-19bdebcbe6969a7e5884ab0a384f1f1d"></div>
+<script async="async" data-cfasync="false" src="https://pl31347707.profitableratecpmnetwork.com/ad1aa6a7468f4a598d090b0d7d274eba/invoke.js"></script>
+<div id="container-ad1aa6a7468f4a598d090b0d7d274eba"></div>
 <div class="centerAds">
 <script>
   atOptions = {{
