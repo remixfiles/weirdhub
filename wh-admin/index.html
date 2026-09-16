@@ -144,6 +144,57 @@
     width: 100%;
     align-items: stretch;
 }
+
+.slug-row {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.slug-row input {
+    flex: 1;
+    min-width: 0;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 8px 0 0 8px !important;
+}
+
+.slugify-btn {
+    flex: 0 0 auto;
+    min-width: 82px;
+    height: 50px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    margin-left: -1.5px;
+    border: 1.5px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.slugify-btn:hover {
+    background: var(--accent-hover);
+}
+
+@media (max-width: 600px) {
+    .slug-row {
+        gap: 6px;
+    }
+
+    .slug-row input {
+        border-radius: 8px !important;
+    }
+
+    .slugify-btn {
+        padding: 0 13px;
+        border-radius: 8px;
+    }
+}
 .featured-image-row input {
     flex: 1;
     min-width: 0;
@@ -471,10 +522,13 @@
     <div class="form-card">
       <h3 class="section-title">Post Details</h3>
 
-      <div class="form-group">
+        <div class="form-group">
         <label>Slug</label>
-        <input type="text" id="post-slug" placeholder="how-ai-is-changing-everyday-life">
-      </div>
+        <div class="slug-row">
+            <input type="text" id="post-slug" placeholder="how-ai-is-changing-everyday-life">
+            <button type="button" id="slugify-btn" class="slugify-btn">Slugify</button>
+        </div>
+        </div>
 
       <div class="form-group">
         <label>Category</label>
@@ -565,6 +619,22 @@ Continue with H2 + Paragraph blocks..."></textarea>
 
     const imageFileInput = document.getElementById('image-file-input');
 const imageUploadBtn = document.getElementById('image-upload-btn');
+
+const slugifyBtn = document.getElementById('slugify-btn');
+
+slugifyBtn.addEventListener('click', () => {
+    const slugInput = document.getElementById('post-slug');
+
+    let slug = slugInput.value.trim().toLowerCase();
+
+    slug = slug
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+
+    slugInput.value = slug;
+});
 
 imageUploadBtn.addEventListener('click', () => {
     imageFileInput.click();
