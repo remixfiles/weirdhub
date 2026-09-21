@@ -31,4 +31,5 @@ jobs:
           META_DESCRIPTION: ${{ github.event.client_payload.metaDescription }}
           REFERENCES: ${{ github.event.client_payload.references }}
           FULL_ARTICLE: ${{ github.event.client_payload.fullArticle }}
+          FEATURED: ${{ github.event.client_payload.featured }}
         run: python .github/scripts/publish.py

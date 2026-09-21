@@ -121,6 +121,43 @@ def update_category_index(content, new_card):
         1
     )
 
+
+def update_home_featured(content, new_card):
+    marker = '<!-- Home Card Add Below -->'
+
+    if marker not in content:
+        fail("Home Featured marker not found.")
+
+    start = content.index(marker) + len(marker)
+
+    end_marker = '''    </div>
+    </div>
+  </section>'''
+
+    end = content.find(end_marker, start)
+
+    if end == -1:
+        fail("Home Featured section ending not found.")
+
+    featured_area = content[start:end]
+
+    cards = re.findall(
+        r'<a href="[^"]+" class="post-card">.*?</a>',
+        featured_area,
+        flags=re.S
+    )
+
+    cards = [new_card] + cards[:14]
+
+    new_featured_area = "\n\n\n" + "\n\n\n".join(cards) + "\n\n"
+
+    return (
+        content[:start]
+        + new_featured_area
+        + content[end:]
+    )
+
+
 def update_sitemap(content, category, slug):
     today = datetime.now(ZoneInfo("Asia/Dhaka")).strftime("%Y-%m-%d")
     new_url = f"https://weirdhub.site/blogs/{category}/{slug}/"
@@ -427,6 +464,7 @@ def main():
     meta_description = get_input("META_DESCRIPTION")
     references = get_input("REFERENCES")
     full_article = get_input("FULL_ARTICLE")
+    featured = get_input("FEATURED").lower() == "true"
 
     if not slug:
         fail("Post slug is required.")
@@ -488,15 +526,27 @@ def main():
     category_path = f"blogs/{category}/index.html"
     category_content, category_sha = get_file(category_path)
     sitemap_content, sitemap_sha = get_file("sitemap.xml")
+
     new_category_content = update_category_index(
             category_content,
             new_card
-        )
+    )
 
     new_sitemap_content = update_sitemap(
             sitemap_content,
             category,
             slug
+    )
+
+    home_index_content = None
+    home_index_sha = None
+    new_home_index_content = None
+
+    if featured:
+        home_index_content, home_index_sha = get_file("index.html")
+        new_home_index_content = update_home_featured(
+            home_index_content,
+            new_card
         )
 
     article_path = f"blogs/{category}/{slug}/index.html"
@@ -539,6 +589,14 @@ def main():
             new_sitemap_content,
             f"Update sitemap: {title}",
             sitemap_sha
+        )
+
+    if featured:
+        github_put(
+            "index.html",
+            new_home_index_content,
+            f"Update Featured Stories: {title}",
+            home_index_sha
         )
 
     print("SUCCESS: Blog post published successfully.")

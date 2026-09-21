@@ -572,6 +572,13 @@
     id="references"
     placeholder="References"></textarea>
 </div>
+
+<div class="form-group">
+  <label style="display:flex; align-items:center; gap:10px; cursor:pointer; text-transform:none; letter-spacing:0;">
+    <input type="checkbox" id="featured-post" style="width:18px; height:18px; cursor:pointer;">
+    <span>Add to Featured Stories</span>
+  </label>
+</div>
     </div>
 
     <!-- Full Article Content -->
@@ -803,6 +810,7 @@ function pass2ForImageUpload() {
       const metaDescription = document.getElementById('meta-description').value.trim();
       const references = document.getElementById('references').value.trim();
       const fullArticle = document.getElementById('full-article').value.trim();
+      const featured = document.getElementById('featured-post').checked;
 
       if (!pass1 || !pass2) {
         showPublishStatus('Please enter both Pass1 and Pass2.', true);
@@ -834,7 +842,8 @@ function pass2ForImageUpload() {
         featuredImage,
         metaDescription,
         references,
-        fullArticle
+        fullArticle,
+        featured
       };
 
       button.disabled = true;
