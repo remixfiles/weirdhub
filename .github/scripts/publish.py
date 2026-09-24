@@ -447,6 +447,7 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
 </footer>
 <script src="/components.js"></script>
 <script src="https://pl31347708.profitableratecpmnetwork.com/52/a0/e2/52a0e20abd377d32e9156dd711a3ee98.js"></script>
+<script src="/js/email-subscribe.js" defer></script>
 </body>
 </html>'''
 
