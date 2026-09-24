@@ -187,11 +187,32 @@
 <script src="https://www.highrevenueformat.com/364eb2536b5869fc44ef3d3dedede7c5/invoke.js"></script>
 </div>
 <footer class="footer">
+  <!-- Newsletter Subscription Section -->
+  <div class="newsletter-wrapper">
+    <div class="newsletter-inner">
+      <div class="newsletter-info">
+        <h3>Curiosity in Your Inbox</h3>
+        <p>Get our weekly digest of the 5 most bizarre, astonishing, and mind-bending stories delivered straight to you.</p>
+      </div>
+      <form id="newsletter-form" class="newsletter-form">
+        <div class="newsletter-input-group">
+          <input type="email" id="newsletter-email" placeholder="Enter your email address" required autocomplete="email" />
+          <button type="submit" id="newsletter-btn">
+            <span class="btn-text">Subscribe</span>
+            <span class="btn-spinner" style="display:none;">Joining...</span>
+          </button>
+        </div>
+        <div id="newsletter-status" class="newsletter-status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
   <div class="footer-container">
     <div class="footer-col">
       <h4>WeirdHub</h4>
       <p style="color: var(--muted-color); font-size:0.9rem; line-height:1.6;">Exploring intriguing topics from every corner of the world.</p>
     </div>
+
     <div class="footer-col">
       <h4>Explore</h4>
       <ul>
@@ -201,6 +222,7 @@
         <li><a href="/blogs/update-of-science/">Science Updates</a></li>
       </ul>
     </div>
+
     <div class="footer-col">
       <h4>Company</h4>
       <ul>
@@ -210,6 +232,7 @@
         <li><a href="/privacy-policy/">Privacy Policy</a></li>
       </ul>
     </div>
+
     <div class="footer-col">
       <h4>Connect</h4>
       <ul>
@@ -218,6 +241,7 @@
       </ul>
     </div>
   </div>
+
   <div class="footer-bottom">
     <p>&copy; 2026 WeirdHub. All rights reserved. | Built for curious minds worldwide.</p>
   </div>
