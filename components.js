@@ -1,6 +1,23 @@
 // components.js - Interactivity and Card Renderers for WeirdHub
 // Vanilla JS only
 
+//Google Analytics Code Start
+
+(function() {
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-TV4Z8HNVR8';
+  document.head.appendChild(s);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TV4Z8HNVR8');
+})();
+
+//Google Analytics Code End
+
 function setActiveNavLinks() {
   const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('.nav-link[data-path]');
