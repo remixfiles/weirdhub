@@ -210,7 +210,20 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
 '''
                 first_paragraph_inserted = True
             if i == 4:
-                content += '''      <div>
+                content += '''      <br><div class="centerAds">
+        <script>
+  atOptions = {{
+    'key' : '833253cad0d9cbe33ecac475deddcc5c',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {{}}
+  }};
+</script>
+<script src="https://www.highrevenueformat.com/833253cad0d9cbe33ecac475deddcc5c/invoke.js"></script>
+      </div><br>
+
+      <div>
         <a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92">
           <img src="https://res.cloudinary.com/dhj4ovvav/image/upload/v1788140778/support_juhcsm.webp" alt="" loading="lazy">
         </a>
