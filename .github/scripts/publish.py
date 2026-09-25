@@ -280,7 +280,7 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
 <meta property="og:image:secure_url" content="{featured_image}">
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image:height" content="800">
 <meta property="og:image:alt" content="{title}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
