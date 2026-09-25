@@ -121,7 +121,6 @@ def update_category_index(content, new_card):
         1
     )
 
-
 def update_home_featured(content, new_card):
     marker = '<!-- Home Card Add Below -->'
 
@@ -157,7 +156,6 @@ def update_home_featured(content, new_card):
         + content[end:]
     )
 
-
 def update_sitemap(content, category, slug):
     today = datetime.now(ZoneInfo("Asia/Dhaka")).strftime("%Y-%m-%d")
     new_url = f"https://weirdhub.site/blogs/{category}/{slug}/"
@@ -170,7 +168,6 @@ def update_sitemap(content, category, slug):
     if marker not in content:
         fail("Sitemap closing tag not found.")
     return content.replace(marker, new_entry + marker, 1)
-
 
 def update_blogpost_json(content, new_post):
     data = json.loads(content)
@@ -210,20 +207,7 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
 '''
                 first_paragraph_inserted = True
             if i == 4:
-                content += '''      <br><div class="centerAds">
-        <script>
-  atOptions = {{
-    'key' : '833253cad0d9cbe33ecac475deddcc5c',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {{}}
-  }};
-</script>
-<script src="https://www.highrevenueformat.com/833253cad0d9cbe33ecac475deddcc5c/invoke.js"></script>
-      </div><br>
-
-      <div>
+                content += '''      <div>
         <a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92">
           <img src="https://res.cloudinary.com/dhj4ovvav/image/upload/v1788140778/support_juhcsm.webp" alt="" loading="lazy">
         </a>
@@ -235,19 +219,6 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
     if references.strip():
         refs = [r.strip() for r in references.splitlines() if r.strip()]
         refs_html = f'''
-        <div class="centerAds">
-<script>
-  atOptions = {{
-    'key' : '47f39551278bad9b7c4e470d1c751af0',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {{}}
-  }};
-</script>
-<script src="https://www.highrevenueformat.com/47f39551278bad9b7c4e470d1c751af0/invoke.js"></script>
-</div>
-<br>
       <hr>
 
       <section class="references">
@@ -359,6 +330,19 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
     </a>
     <div class="post-content">
 {content}{references_html}
+      <br><div class="centerAds">
+        <script>
+  atOptions = {{
+    'key' : '40dc1ad928dae0ae6748bec4e1a074f8',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {{}}
+  }};
+</script>
+<script src="https://www.highrevenueformat.com/40dc1ad928dae0ae6748bec4e1a074f8/invoke.js"></script>
+      </div><br>
+
       <a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92">
         ❤ <b>Support Writer</b> 👈👈👈
       </a>
