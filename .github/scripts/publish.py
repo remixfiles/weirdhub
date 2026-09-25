@@ -197,7 +197,7 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
             if not first_paragraph_inserted:
                 content += '''      <!--
       <figure>
-        <a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92">
+        <a href="https://www.profitableratecpmnetwork.com/g7azwemb8?key=5b773b30bd6e1f02a67411e4a8ddb645">
           <img src="" alt="" loading="lazy">
         </a>
         <figcaption></figcaption>
@@ -208,7 +208,7 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
                 first_paragraph_inserted = True
             if i == 4:
                 content += '''      <div>
-        <a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92">
+        <a href="https://www.profitableratecpmnetwork.com/g7azwemb8?key=5b773b30bd6e1f02a67411e4a8ddb645">
           <img src="https://res.cloudinary.com/dhj4ovvav/image/upload/v1788140778/support_juhcsm.webp" alt="" loading="lazy">
         </a>
         <figcaption>By clicking the banner, you can support writer for free</figcaption>
@@ -325,7 +325,7 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
         <span>{date}</span>
       </div>
     </div>
-    <a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92">
+    <a href="https://www.profitableratecpmnetwork.com/g7azwemb8?key=5b773b30bd6e1f02a67411e4a8ddb645">
       <img src="{featured_image}" alt="{title}" title="{title}" class="post-hero" loading="eager" fetchpriority="high" width="1200" height="800">
     </a>
     <div class="post-content">
@@ -343,15 +343,15 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
 <script src="https://www.highrevenueformat.com/40dc1ad928dae0ae6748bec4e1a074f8/invoke.js"></script>
       </div><br>
 
-      <a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92">
+      <a href="https://www.profitableratecpmnetwork.com/g7azwemb8?key=5b773b30bd6e1f02a67411e4a8ddb645">
         ❤ <b>Support Writer</b> 👈👈👈
       </a>
       <br><br>
     </div>
     <div class="post-footer">
       <p><strong>Share this story:</strong> 
-        <a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92">X</a> • 
-        <a href="https://www.profitableratecpmnetwork.com/s3vef0gkh?key=e44c948612fcd34afd5a4a4282ce9f92">LinkedIn</a>
+        <a href="https://www.profitableratecpmnetwork.com/g7azwemb8?key=5b773b30bd6e1f02a67411e4a8ddb645">X</a> • 
+        <a href="https://www.profitableratecpmnetwork.com/g7azwemb8?key=5b773b30bd6e1f02a67411e4a8ddb645">LinkedIn</a>
       </p>
       <p style="margin-top:12px;">
         <a href="/blogs/{category}/{slug}/">
