@@ -1,16 +1,137 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <script src="https://quge5.com/88/tag.min.js" data-zone="274422" async data-cfasync="false"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact WeirdHub. Reach out with story ideas, feedback, or collaboration proposals.">
+  <meta name="description" content="Contact WeirdHub. Reach out with mysterious story leads, article feedback, corrections, or collaboration proposals.">
   <title>Contact Us | WeirdHub</title>
   <link rel="stylesheet" href="/css/components.css">
   <link rel="icon" href="/images/favicon.ico">
+  <style>
+    /* Contact Page Specific Enhancements */
+    .contact-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 50px 20px 70px;
+    }
+    .contact-header {
+      margin-bottom: 30px;
+    }
+    .contact-header h1 {
+      font-size: 2.6rem;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .contact-header p {
+      color: var(--muted-color, #666);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .contact-reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 25px 0 35px;
+    }
+    .reason-card {
+      background: var(--card-bg, rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--border-color, rgba(128, 128, 128, 0.2));
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 0.92rem;
+    }
+    .reason-card h4 {
+      margin-bottom: 6px;
+      font-size: 1rem;
+      color: var(--text-color, #222);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .reason-card p {
+      color: var(--muted-color, #777);
+      margin: 0;
+      line-height: 1.45;
+      font-size: 0.85rem;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color, #ccc);
+      background: var(--input-bg, transparent);
+      color: inherit;
+      font-size: 0.98rem;
+    }
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    .post-form-info {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-color, rgba(128, 128, 128, 0.2));
+    }
+    .info-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+    .info-box {
+      background: var(--card-bg, rgba(255, 255, 255, 0.03));
+      border: 1px solid var(--border-color, rgba(128, 128, 128, 0.15));
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .info-box h4 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .info-box p {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--muted-color, #666);
+    }
+    .info-box a {
+      color: #D35400;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .info-box a:hover {
+      text-decoration: underline;
+    }
+    .privacy-notice {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(211, 84, 0, 0.08);
+      border-left: 3px solid #D35400;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin-top: 20px;
+      font-size: 0.88rem;
+      color: var(--muted-color, #666);
+    }
+    .privacy-notice span {
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
-<nav class="navbar">
+  <nav class="navbar">
     <div class="nav-container">
       <a href="/" class="logo">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -54,147 +175,199 @@
     </div>
   </nav>
 
-  <div class="container" style="max-width:680px; padding:50px 20px 70px;">
-    <h1 style="font-size:2.5rem; margin-bottom:12px;">Get in Touch</h1>
-    <p style="color:var(--muted-color); margin-bottom:35px;">We read every message. For story pitches, feedback, or press inquiries, please use the form below.</p>
+  <main class="contact-container">
+    <!-- Header & Context Before Form -->
+    <header class="contact-header">
+      <h1>Let’s Start a Conversation</h1>
+      <p>Have an intriguing tip about an unexplained event, feedback on one of our deep-dive stories, or a media and partnership proposal? We’re always eager to listen to curious minds.</p>
+    </header>
 
+    <div class="contact-reasons-grid">
+      <div class="reason-card">
+        <h4>💡 Story Leads & Tips</h4>
+        <p>Know an extraordinary discovery or mystery we should investigate? Share your leads.</p>
+      </div>
+      <div class="reason-card">
+        <h4>🔍 Fact Corrections</h4>
+        <p>Spotted an inaccuracy? We take factual rigor seriously and welcome corrections.</p>
+      </div>
+      <div class="reason-card">
+        <h4>🤝 Partnerships</h4>
+        <p>Inquire about editorial collaborations, sponsorships, or licensing content.</p>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
     <form id="contact-form" onsubmit="handleSubmit(event)">
-      <label style="display:block; margin-bottom:6px; font-weight:500;">Your Name</label>
-      <input type="text" id="name" required placeholder="Jane Doe">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" required placeholder="e.g. Jane Doe" autocomplete="name">
+      </div>
 
-      <label style="display:block; margin-bottom:6px; font-weight:500;">Email Address</label>
-      <input type="email" id="email" required placeholder="you@example.com">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required placeholder="e.g. you@example.com" autocomplete="email">
+      </div>
 
-      <label style="display:block; margin-bottom:6px; font-weight:500;">Subject</label>
-      <input type="text" id="subject" required placeholder="Story idea / Feedback / Collaboration">
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" required placeholder="Story Lead / Correction / Business Inquiry">
+      </div>
 
-      <label style="display:block; margin-bottom:6px; font-weight:500;">Message</label>
-      <textarea id="message" required placeholder="Tell us more..."></textarea>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" required placeholder="Please provide background details, context, or links if you are submitting a story pitch..."></textarea>
+      </div>
 
-      <button type="submit" class="btn" style="margin-top:10px;">Send Message</button>
+      <button type="submit" class="btn" style="width:100%; padding:14px; font-size:1rem; cursor:pointer;">Send Message</button>
     </form>
 
-    <p style="margin-top:30px; font-size:0.9rem; color:var(--muted-color);">We typically respond within 3–5 business days.</p>
+    <!-- Post-Form Supplementary Information -->
+    <section class="post-form-info">
+      <div class="info-boxes">
+        <div class="info-box">
+          <h4>Direct Mailbox</h4>
+          <p>Prefer emailing directly? Reach our team at:</p>
+          <p style="margin-top:6px;"><strong>General:</strong> <a href="mailto:contact@weirdhub.site">contact@weirdhub.site</a></p>
+          <p><strong>Business:</strong> <a href="mailto:business@weirdhub.site">business@weirdhub.site</a></p>
+        </div>
 
-    <div style="display: flex; justify-content: center; padding: 20px;">
+        <div class="info-box">
+          <h4>Submitting Pitch Evidence?</h4>
+          <p>When sharing unusual events or news tips, please include verifiable references, original photos, or archive links so our editorial desk can quickly verify them.</p>
+        </div>
+      </div>
+
+      <div class="privacy-notice">
+        <span>🛡️</span>
+        <div>
+          <strong>Privacy Guarantee:</strong> We respect your privacy. Any information or email shared here is kept strictly confidential and will never be shared with third parties or used for promotional spam.
+        </div>
+      </div>
+
+      <p style="margin-top:20px; font-size:0.88rem; color:var(--muted-color); text-align:center;">
+        ⏱️ Our editorial team typically reviews and responds to messages within <strong>24 to 48 hours</strong>.
+      </p>
+    </section>
+
+    <!-- Ad Unit -->
+    <div style="display: flex; justify-content: center; padding: 25px 0;">
       <script>
-  atOptions = {
-    'key' : '5f5e74b694e4e79eba9ca7adabbbd02c',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
-  };
-</script>
-<script src="https://www.highrevenueformat.com/5f5e74b694e4e79eba9ca7adabbbd02c/invoke.js"></script>
-
+        atOptions = {
+          'key' : '5f5e74b694e4e79eba9ca7adabbbd02c',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
+      </script>
+      <script src="https://www.highrevenueformat.com/5f5e74b694e4e79eba9ca7adabbbd02c/invoke.js"></script>
     </div>
-  </div>
-
-
+  </main>
 
   <script async="async" data-cfasync="false" src="https://pl31347707.profitableratecpmnetwork.com/ad1aa6a7468f4a598d090b0d7d274eba/invoke.js"></script>
-<div id="container-ad1aa6a7468f4a598d090b0d7d274eba"></div>
-<footer class="footer">
-  <!-- Newsletter Subscription Section -->
-  <div class="newsletter-wrapper">
-    <div class="newsletter-inner">
-      <div class="newsletter-info">
-        <h3>Curiosity in Your Inbox</h3>
-        <p>Get our weekly digest of the 5 most bizarre, astonishing, and mind-bending stories delivered straight to you.</p>
-      </div>
-      <form id="newsletter-form" class="newsletter-form">
-        <div class="newsletter-input-group">
-          <input type="email" id="newsletter-email" placeholder="Enter your email address" required autocomplete="email" />
-          <button type="submit" id="newsletter-btn">
-            <span class="btn-text">Subscribe</span>
-            <span class="btn-spinner" style="display:none;">Joining...</span>
-          </button>
+  <div id="container-ad1aa6a7468f4a598d090b0d7d274eba"></div>
+
+  <footer class="footer">
+    <!-- Newsletter Subscription Section -->
+    <div class="newsletter-wrapper">
+      <div class="newsletter-inner">
+        <div class="newsletter-info">
+          <h3>Curiosity in Your Inbox</h3>
+          <p>Get our weekly digest of the 5 most bizarre, astonishing, and mind-bending stories delivered straight to you.</p>
         </div>
-        <div id="newsletter-status" class="newsletter-status" aria-live="polite"></div>
-      </form>
-    </div>
-  </div>
-
-  <div class="footer-container">
-    <div class="footer-col">
-      <h4>WeirdHub</h4>
-      <p style="color: var(--muted-color); font-size:0.9rem; line-height:1.6;">Exploring intriguing topics from every corner of the world.</p>
-    </div>
-
-    <div class="footer-col">
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="/blogs/">All Blogs</a></li>
-        <li><a href="/blogs/weird-hub/">Weird Hub</a></li>
-        <li><a href="/blogs/animals/">Animal Facts</a></li>
-        <li><a href="/blogs/update-of-science/">Science Updates</a></li>
-      </ul>
+        <form id="newsletter-form" class="newsletter-form">
+          <div class="newsletter-input-group">
+            <input type="email" id="newsletter-email" placeholder="Enter your email address" required autocomplete="email" />
+            <button type="submit" id="newsletter-btn">
+              <span class="btn-text">Subscribe</span>
+              <span class="btn-spinner" style="display:none;">Joining...</span>
+            </button>
+          </div>
+          <div id="newsletter-status" class="newsletter-status" aria-live="polite"></div>
+        </form>
+      </div>
     </div>
 
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="/about/">About Us</a></li>
-        <li><a href="/author-message/">Author's Message</a></li>
-        <li><a href="/contact-us/">Contact Us</a></li>
-        <li><a href="/privacy-policy/">Privacy Policy</a></li>
-      </ul>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>WeirdHub</h4>
+        <p style="color: var(--muted-color); font-size:0.9rem; line-height:1.6;">Exploring intriguing topics from every corner of the world.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/blogs/">All Blogs</a></li>
+          <li><a href="/blogs/weird-hub/">Weird Hub</a></li>
+          <li><a href="/blogs/animals/">Animal Facts</a></li>
+          <li><a href="/blogs/update-of-science/">Science Updates</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About Us</a></li>
+          <li><a href="/author-message/">Author's Message</a></li>
+          <li><a href="/contact-us/">Contact Us</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/weirdhub.site" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://x.com/WeirdHubSite" target="_blank" rel="noopener">Twitter / X</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="footer-col">
-      <h4>Connect</h4>
-      <ul>
-	<li><a href="https://www.facebook.com/weirdhub.site" target="_blank" rel="noopener">Facebook</a></li>
-        <li><a href="https://x.com/WeirdHubSite" target="_blank" rel="noopener">Twitter / X</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>&copy; 2026 WeirdHub. All rights reserved. | Built for curious minds worldwide.</p>
     </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>&copy; 2026 WeirdHub. All rights reserved. | Built for curious minds worldwide.</p>
-  </div>
-</footer>
+  </footer>
 
   <script src="/components.js"></script>
-<script>
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBm08grHwAq2gJc8bDv55b4o-f4YkmVBMyjq5jxQwb-fzbTND-XrTwH3kHIjYOjW8_/exec';
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBm08grHwAq2gJc8bDv55b4o-f4YkmVBMyjq5jxQwb-fzbTND-XrTwH3kHIjYOjW8_/exec';
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
 
-    const payload = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      subject: document.getElementById('subject').value,
-      message: document.getElementById('message').value
-    };
+      const payload = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
 
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors', // CORS ব্লক এড়াতে এটি জরুরি
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
-    .then(() => {
-      alert('Thank you! Your message has been sent successfully.');
-      e.target.reset();
-    })
-    .catch(error => {
-      console.error('Error!', error);
-      alert('Something went wrong. Please try again later.');
-    })
-    .finally(() => {
-      btn.textContent = 'Send Message';
-      btn.disabled = false;
-    });
-  }
-</script>
-<script src="/js/email-subscribe.js" defer></script>
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        alert('Thank you! Your message has been sent successfully.');
+        e.target.reset();
+      })
+      .catch(error => {
+        console.error('Error!', error);
+        alert('Something went wrong. Please try again later.');
+      })
+      .finally(() => {
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      });
+    }
+  </script>
+  <script src="/js/email-subscribe.js" defer></script>
 </body>
 </html>
