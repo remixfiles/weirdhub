@@ -7,9 +7,14 @@ on:
     types: [publish-blog-telegram]
   workflow_dispatch:
 
+concurrency:
+  group: publish-blog
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

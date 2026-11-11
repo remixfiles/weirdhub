@@ -14,6 +14,7 @@ BRANCH = "main"
 PASS1_SECRET = os.environ["PASS1"]
 PASS2_SECRET = os.environ["PASS2"]
 GITHUB_API = "https://api.github.com"
+REQUEST_TIMEOUT = 30
 
 headers = {
     "Authorization": f"Bearer {GITHUB_TOKEN}",
@@ -31,7 +32,7 @@ def get_input(name, default=""):
 
 def github_get(path):
     url = f"{GITHUB_API}/repos/{REPO_OWNER}/{REPO_NAME}/contents/{path}"
-    response = requests.get(url, headers=headers, params={"ref": BRANCH})
+    response = requests.get(url, headers=headers, params={"ref": BRANCH}, timeout=REQUEST_TIMEOUT)
     if response.status_code != 200:
         fail(f"GitHub GET failed for {path}: {response.status_code} {response.text}")
     return response.json()
@@ -53,9 +54,17 @@ def github_put(path, content, message, sha=None):
         "content": encoded,
         "branch": BRANCH
     }
+    # Retry-safe: if the file already exists (e.g. from a previous failed run),
+    # reuse its sha so the update does not fail with 422.
+    if not sha:
+        check = requests.get(url, headers=headers, params={"ref": BRANCH}, timeout=REQUEST_TIMEOUT)
+        if check.status_code == 200:
+            existing = check.json()
+            if isinstance(existing, dict):
+                sha = existing.get("sha")
     if sha:
         payload["sha"] = sha
-    response = requests.put(url, headers=headers, json=payload)
+    response = requests.put(url, headers=headers, json=payload, timeout=REQUEST_TIMEOUT)
     if response.status_code not in (200, 201):
         fail(f"GitHub PUT failed for {path}: {response.status_code} {response.text}")
     return response.json()
@@ -182,8 +191,11 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
     if not blocks:
         fail("Full article content is empty.")
     def clean_text(text):
-        return re.sub(r"^\*\*(.*?)\*\*$", r"\1", text, flags=re.S).strip()
+        return escape_text(re.sub(r"^\*\*(.*?)\*\*$", r"\1", text, flags=re.S).strip())
     title = clean_text(blocks[0])
+    meta_description = escape_text(meta_description)
+    author = escape_text(author)
+    featured_image = escape_text(featured_image)
     content = ""
     first_paragraph_inserted = False
     for i in range(1, len(blocks)):
@@ -218,13 +230,13 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
     references_html = ""
     if references.strip():
         refs = [r.strip() for r in references.splitlines() if r.strip()]
-        refs_html = f'''
+        references_html = f'''
       <hr>
 
       <section class="references">
         <h2>References</h2>
         <ol>
-{chr(10).join(f"          <li>{ref}</li>" for ref in refs)}
+{chr(10).join(f"          <li>{html.escape(ref)}</li>" for ref in refs)}
         </ol>
       </section>
 
@@ -354,7 +366,7 @@ def generate_article_html(title, slug, category, author, featured_image, meta_de
         <a href="https://auctionr.org/4/e44c948612fcd34afd5a4a4282ce9f92">LinkedIn</a>
       </p>
       <p style="margin-top:12px;">
-        <a href="/blogs/{category}/{slug}/">
+        <a href="/blogs/{category}/">
           &larr; Back to {category_name}
         </a>
       </p>
@@ -495,6 +507,8 @@ def main():
         fail("Category is required.")
     if not full_article:
         fail("Full article is required.")
+    if not featured_image:
+        fail("Featured image is required.")
 
     title, _ = parse_article(full_article)
 
@@ -551,14 +565,14 @@ def main():
     sitemap_content, sitemap_sha = get_file("sitemap.xml")
 
     new_category_content = update_category_index(
-            category_content,
-            new_card
+        category_content,
+        new_card
     )
 
     new_sitemap_content = update_sitemap(
-            sitemap_content,
-            category,
-            slug
+        sitemap_content,
+        category,
+        slug
     )
 
     home_index_content = None
@@ -580,20 +594,17 @@ def main():
     print(f"Slug: {slug}")
     print(f"Article: {article_path}")
 
+    # Write order matters: blogpost.json is the "published" registry for the slug,
+    # so it is written LAST. If any earlier step fails, a retry still works.
+
+    # 1. Article page first
     github_put(
-        "blogpost.json",
-        new_blogpost_content,
-        f"Publish blog: {title}",
-        blogpost_sha
+        article_path,
+        article_html,
+        f"Create blog post: {title}"
     )
 
-    github_put(
-        "blogs/index.html",
-        new_blog_index_content,
-        f"Add blog card: {title}",
-        blog_index_sha
-    )
-
+    # 2. Category index
     github_put(
         category_path,
         new_category_content,
@@ -601,19 +612,23 @@ def main():
         category_sha
     )
 
+    # 3. Blog index
     github_put(
-            article_path,
-            article_html,
-            f"Create blog post: {title}"
-        )
+        "blogs/index.html",
+        new_blog_index_content,
+        f"Add blog card: {title}",
+        blog_index_sha
+    )
 
+    # 4. Sitemap
     github_put(
-            "sitemap.xml",
-            new_sitemap_content,
-            f"Update sitemap: {title}",
-            sitemap_sha
-        )
+        "sitemap.xml",
+        new_sitemap_content,
+        f"Update sitemap: {title}",
+        sitemap_sha
+    )
 
+    # 5. Home featured (optional)
     if featured:
         github_put(
             "index.html",
@@ -621,6 +636,14 @@ def main():
             f"Update Featured Stories: {title}",
             home_index_sha
         )
+
+    # 6. Registry last
+    github_put(
+        "blogpost.json",
+        new_blogpost_content,
+        f"Publish blog: {title}",
+        blogpost_sha
+    )
 
     print("SUCCESS: Blog post published successfully.")
 
