@@ -114,6 +114,9 @@ def update_blog_index(content, new_card):
     marker = '<!-- ---------------- New Cards Add Here ------------------- -->'
     if marker not in content:
         fail("Blog index marker not found.")
+    card_href = re.search(r'href="([^"]+)"', new_card).group(1)
+    if f'href="{card_href}"' in content:
+        return content
     return content.replace(
         marker,
         marker + "\n" + new_card,
@@ -124,6 +127,9 @@ def update_category_index(content, new_card):
     marker = '<!-- New Card -->'
     if marker not in content:
         fail("Category page marker not found.")
+    card_href = re.search(r'href="([^"]+)"', new_card).group(1)
+    if f'href="{card_href}"' in content:
+        return content
     return content.replace(
         marker,
         marker + "\n" + new_card,
@@ -155,6 +161,8 @@ def update_home_featured(content, new_card):
         flags=re.S
     )
 
+    card_href = re.search(r'href="([^"]+)"', new_card).group(1)
+    cards = [c for c in cards if f'href="{card_href}"' not in c]
     cards = [new_card] + cards[:14]
 
     new_featured_area = "\n\n\n" + "\n\n\n".join(cards) + "\n\n"
@@ -176,6 +184,8 @@ def update_sitemap(content, category, slug):
     marker = "</urlset>"
     if marker not in content:
         fail("Sitemap closing tag not found.")
+    if f"<loc>{new_url}</loc>" in content:
+        return content
     return content.replace(marker, new_entry + marker, 1)
 
 def update_blogpost_json(content, new_post):
